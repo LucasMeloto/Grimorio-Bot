@@ -3,6 +3,9 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 import os
+import sys, types
+if sys.version_info >= (3, 13):
+    sys.modules["audioop"] = types.ModuleType("audioop")
 
 # =============================
 # CONFIGURAÇÃO INICIAL
@@ -85,3 +88,4 @@ async def on_ready():
 # =============================
 if __name__ == "__main__":
     bot.run(TOKEN)
+
