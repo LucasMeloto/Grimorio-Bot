@@ -1,0 +1,1347 @@
+[
+  {
+    "title": "Grimório da Fenix",
+    "description": "\"O fogo não destrói... ele renasce.\n-------------------------------------------------------------------------\nForjado nas cinzas da última guerra celestial e selado com a essência de uma fênix imortal, o Grimório da Fênix é mais do que um simples tomo arcano — é uma extensão da alma de Caleb, o Cavaleiro da Rainha. Suas páginas queimam com um calor suave e constante, como brasas vivas, mas não ferem aquele que é digno de tocá-lo.\n-------------------------------------------------------------------------\nO grimório responde apenas àqueles com o dom da fênix, e quando Caleb o abre, suas páginas se viram sozinhas ao feitiço desejado, como se lessem seus pensamentos e compartilhassem de sua vontade.\n-------------------------------------------------------------------------\n <b>Permite conjurar magias exclusivas como Chama Purgadora, Asas da Ressurreição e Julgamento Ígneo e Chamas do Renascer<b>.",
+    "categories": [],
+    "element": ""
+  },
+  {
+    "title": "Dança Espada Gêmea",
+    "description": "O Usuario faz espadas de luz em sua mão com magia de luz, o usuario começa a dançar enquanto ataca tornando os seus movimentos imprevisível tendo a chance de critico aumentada,a lamina após conjurada dura ate o final da luta e ela se desfaz temporariamente quando o usuario precisa realizar uma magia.(Cavaleiros não conhecem passos de dança, tornando seus ataques certeiros).\n\n<img src=\"https://media1.tenor.com/m/xGNL1k22rYYAAAAd/spirit-sword-rush-vegito.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\n<br>\nDano: 10x7 (Total: 60 de dano).\n<br>\nChance de Critica Base: 50%.\n<br>\nCusto: 25 de Mana .\n<br>\nCooldown:5 turnos .\n<br>\nCaso 3 hits sejam critico, executa o ataque extra <b>Mil Cortes Divinos</b>\n<br>\n<b>Mil Cortes Divinos</b>\n<br>\nO Usuario realiza Multiplos Ataques no alvo afetado podendo causar sangramento.\n<br>\n<img src=\"https://i.makeagif.com/media/9-17-2018/hbrvWp.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">",
+    "element": "light",
+    "categories": [
+      "Luz",
+      "Ataque",
+      "Curta",
+      "Longa",
+      "Contra-Ataque"
+    ]
+  },
+  {
+    "title": "Deslocamento Astral",
+    "description": "Caleb entra em um estado de alta concentração e fluxo mágico, permitindo que ele desvaneça brevemente no espaço sempre que percebe perigo, esquivando de ataques físicos e mágicos com uma movimentação quase instantânea, como se seu corpo se tornasse intangível por um piscar de olhos, desviando de todos os ataques em seu alcance.\n<br>\n<video autoplay loop muted playsinline\n  style=\"max-width: 100%; height: auto; margin: 0 auto; display: flex; border-radius: 6px;\">\n  <source src=\"https://i.imgur.com/tMFzmiU.mp4\" type=\"video/mp4\">\n  Seu navegador não suporta o elemento de vídeo.\n</video>\n<br>\nEfeito:\n<br>\nAo ser atacado, o personagem teleporta-se alguns centimetros/metros à frente, para o lado ou para trás, evitando completamente o dano.\nA esquiva é quase instantânea, e o inimigo vê apenas um rastro mágico ou um efeito visual (faísca, distorção, luz azulada...).\n<br>\n<br>\nLimitações:\n<br>\nConsome energia.\n<br>\nNão funciona contra ataques em área muito amplos ou em locais com bloqueio mágico.\n<br>\nSe o personagem estiver exausto, ferido ou mentalmente instável, ele pode falhar em ativá-la.\n<br>\nO Usuario não pode atacar quanto estiver usando essa habilidade.\n<br>\n<br>\nCusto: 100 de mana.\n<br>\nDuração: 1 turno.\n<br>\nCooldown: 2 turnos.\n<br>\n<br>\nEfeito Extra:\n<br>\nSe a esquiva for perfeita, Caleb realizara um contra-ataque usando um alguma magia basica, Ex: Bola de fogo,Relampago,Foice de Vento e etc",
+    "element": "dimensional",
+    "categories": [
+      "Defesa",
+      "Suporte",
+      "Contra-Ataque"
+    ]
+  },
+  {
+    "title": "Protego diabolica",
+    "description": "Magia de proteção avançada de fogo, queimando todo ao arredor e protegendo aqueles que estão no circulo,aqueles que tentarem atravessar a chama serão desintegrados.\n\n<img src=\"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ce1ae3b8-6e98-4009-8e99-b1a5cdd50c25/detbtfz-b63495e3-6c18-4757-aa7f-3920285647d3.jpg/v1/fill/w_1236,h_647,q_70,strp/grindelwald_protego_diabolica_by_gilmarlamberti_detbtfz-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTQ0IiwicGF0aCI6IlwvZlwvY2UxYWUzYjgtNmU5OC00MDA5LThlOTktYjFhNWNkZDUwYzI1XC9kZXRidGZ6LWI2MzQ5NWUzLTZjMTgtNDc1Ny1hYTdmLTM5MjAyODU2NDdkMy5qcGciLCJ3aWR0aCI6Ijw9MTgwNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.xtUe1d9dy6xPvAtWhFwCEr2tWU2ViTJSTc-crsxeqbI\" alt=\"Magia de Proteção de fogo avançada\" style=\"max-width: 100%; height: auto; border-radius: 6px;\" />\n<br>\nEfeito:\n<br>\nO usuario cria um circulo de chamas protegendo ele e seus aliados,em compensação ele não pode atacar enquanto utiliza essa magia, ele faz movimentos como se tivesse orquestrando as chamas.\n<br>\n<br>\nCusto: 500 de mana por turno.\n<br>\nCooldown:10 turnos.\n<br>\nDuração:1-4 (o usuario determina quantos turnos vai durar).",
+    "categories": [
+      "Fogo",
+      "Proteção",
+      "Avançada",
+      "Defesa"
+    ],
+    "element": ""
+  },
+  {
+    "title": "Flare - Chamas do Julgamento",
+    "element": "fire",
+    "description": "Descrição:\nMagia de fogo supremo que incinera tudo em seu caminho com uma explosão branca e silenciosa. A temperatura atinge níveis impossíveis de compreender, fazendo com que a própria luz da explosão pareça consumir a realidade.\n<br>\n<img src=\"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/05/Final-Fantasy-XIV-Flare.jpg\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\nEfeito:\nO usuário convoca uma explosão de energia flamejante em uma área ampla, causando dano extremo a todos os inimigos próximos. A explosão ignora resistências elementais comuns e pode deixar o campo de batalha em brasas, dificultando o movimento de inimigos por 1 turno.\n<br>\n<br>\nCusto: 700 de mana.\n<br>\nCooldown: 8 turnos.\n<br>\nDuração: Instantâneo (efeitos secundários duram 1 turno).\n<br>\n<br>\nLimitações:\n<br>\n<br>\nPode ser usada apenas uma vez a cada combate.\n<br>\nO usuário fica vulnerável por 1 turno após usar a magia, sem poder se defender ou esquivar.\n<br>\nNão pode ser conjurada se houver aliados muito próximos ao centro da explosão (risco de dano colateral).\n<br>",
+    "categories": [
+      "Fogo",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Inundação — Ira do Leviatã",
+    "element": "water",
+    "description": "Descrição:\nO usuário invoca a força de uma maré colossal, como se o oceano inteiro caísse do céu. A pressão esmagadora da água arrasta inimigos e apaga magias elementais de fogo ativas no campo.\n<img src=\"https://media.tenor.com/KvwfhPBfT1kAAAAM/ocean-waves.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\nEfeito:\nTodos os inimigos são atingidos por uma onda massiva que causa dano contínuo de água por 2 turnos. Magias de fogo e chamas no ambiente são anuladas. Inimigos pequenos ou de leve constituição são empurrados para fora da área ou derrubados.\n<br>\n<br>\nCusto: 600 de mana por turno.\n<br>\nCooldown: 9 turnos.\n<br>\nDuração: 2 turnos.\n<br>\n<br>\nLimitações:\n<br>\nO usuário não pode se mover enquanto mantém a magia ativa.\n<br>\nAmbientes fechados ou subterrâneos impedem a invocação total da maré, reduzindo o dano pela metade.\n<br>\nInimigos voadores são menos afetados (recebem apenas 50% do dano).",
+    "categories": [
+      "Agua",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Santo — Julgamento Celestial",
+    "element": "light",
+    "description": "Descrição:\nUma luz pura e sagrada desce dos céus, marcando os corações impuros. Os inimigos são julgados e purificados por uma energia divina que não pode ser detida por sombras ou trevas.\n<br>\n<img src=\"https://i.gifer.com/KbKu.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\nEfeito:\n<br>\nUm pilar de luz sagrada atinge todos os inimigos marcados como malignos, causando dano sagrado elevado. Inimigos do tipo escuridão recebem dano dobrado. Aliados dentro da área recebem uma leve cura e são purificados de efeitos negativos.\n<br>\n<br>\nCusto: 650 de mana.\n<br>\nCooldown: 10 turnos.\n<br>\nDuração: Instantâneo.\n<br>\n<br>\nLimitações:\n<br>\nSó pode ser usada em áreas com visibilidade direta ao céu (sem cobertura).\n<br>\nRequer 1 turno de preparação em que o usuário precisa permanecer imóvel.\n<br>\nNão afeta inimigos com resistência total à luz ou criaturas puras.",
+    "categories": [
+      "Luz",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Terremoto — Colapso da Terra",
+    "element": "earth",
+    "description": "Descrição:\nO solo treme com a fúria do mundo. Garras de pedra surgem do chão, rachaduras se abrem, e uma força ancestral faz a própria terra se rebelar contra os vivos.\n<img src=\"https://tenor.com/view/2012-destruction-earthquake-gif-11348718.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\n<br>\nEfeito:\nCria um tremor massivo que atinge todos os inimigos em solo, causando dano de terra em área. Inimigos com armadura pesada ou instabilidade mágica podem ser derrubados ou soterrados temporariamente.\n<br>\nCusto: 500 de mana.\nCooldown: 8 turnos.\nDuração: 2 turnos (com tremores residuais).\n<br>\nLimitações:\n<br>\n<br>\nIneficaz contra inimigos voadores ou flutuando com magia.\n<br>\nNão pode ser usada em superfícies artificiais como navios, plataformas metálicas ou chão mágico.\n<br>\nPode causar colapso de estruturas aliadas se usado em ambientes fechados (cavernas, castelos, ruínas).",
+    "categories": [
+      "Terra",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Meltdown — Ruína Elemental",
+    "element": "",
+    "description": "Descrição:\nO corpo do usuário brilha em energia instável antes de explodir em um calor corrosivo misturado com rajadas violentas de vento. Essa magia dissolve matéria com uma combinação de calor e pressão atmosférica intensa.\n<br>\n<img src=\"https://tenor.com/view/vegeta-rage-explosion-dbz-gif-6042964.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\n<br>\n<br>\nInflige dano mágico supremo com propriedades de fogo e vento, ignorando resistências comuns. Inimigos atingidos perdem parte de sua defesa mágica por 1 turno e sofrem queimaduras intensas.\n<br>\n<br>\nCusto: 750 de mana.\n<br>\nCooldown: 10 turnos.\n<br>\nDuração: Instantâneo (com penalidade por 1 turno).\n<br>\n<br>\nLimitações:\n<br>\n<br>\nReduz em 50% a defesa mágica do usuário por 1 turno após o uso.\n<br>\nNão pode ser usada se o usuário estiver com menos de 30% de mana máxima.\n<br>\nPode afetar aliados próximos se usados sem controle emocional ou concentração total.",
+    "categories": [
+      "Ataque",
+      "Supremo"
+    ]
+  },
+  {
+    "title": "Congelar — Prisão Glacial",
+    "element": "ice",
+    "description": "Descrição:\nO tempo parece desacelerar enquanto uma tempestade branca cobre o campo. Uma explosão de frio absoluto cristaliza tudo ao redor, congelando o ar, o som e o próprio movimento.\n<br>\n<img src=\"https://tenor.com/view/aokiji-admiral-navy-doflamingo-one-piece-gif-25953807.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\nEfeito:\n<br>\n<br>\nTodos os inimigos em uma área média são congelados parcialmente ou totalmente, dependendo de sua resistência ao gelo. Inimigos congelados não podem agir por 1 turno e recebem dano dobrado de ataques físicos ao serem atingidos.\n<br>\n<br>\nCusto: 600 de mana.\n<br>\nCooldown: 9 turnos.\n<br>\nDuração: 2 turnos (congelamento efetivo dura 1).\n<br>\n<br>\nLimitações:\n<br>\n<br>\nIneficaz contra inimigos com corpo flamejante ou aura térmica ativa.\n<br>\nO congelamento completo só ocorre se o inimigo tiver menos de 50% de vida.\n<br>\nNão pode ser usada em climas extremamente quentes (desertos, fornalhas, etc.).",
+    "categories": [
+      "Gelo",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Burst — Ira de Ramuh",
+    "element": "lightning",
+    "description": "Descrição:\nO ar se enche de eletricidade, os céus escurecem, e uma rajada de trovões é invocada com força esmagadora. Cada raio carrega a vontade da tempestade, fulminando tudo ao redor com precisão brutal.\n<br>\n<img src=\"https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/07/judgment-bolt-final-fantasy-xvi-2.jpg?q=50&fit=crop&w=825&dpr=1.5\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\n<br>\n<br>\nUma sequência de 5 relâmpagos atinge inimigos diferentes ou o mesmo alvo várias vezes, ignorando defesa física e mágica. Inimigos metálicos ou encharcados recebem dano dobrado. Pode causar paralisia temporária.\n<br>\n<br>\nCusto: 650 de mana.\n<br>\nCooldown: 9 turnos.\n<br>\nDuração: Instantâneo (com possibilidade de paralisia por 1 turno).\n<br>\n<br>\nLimitações:\n<br>\nNão pode ser usada em áreas subterrâneas ou protegidas contra magia do céu.\n<br>\nO usuário perde momentaneamente a sensibilidade das mãos após o uso (1 turno sem conjurar magias menores).\n<br>\nA paralisia é anulada se o alvo estiver com resistência elétrica ativa.",
+    "categories": [
+      "Raio",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Meteoro — Ruptura Temporal",
+    "element": "arcane",
+    "description": "Descrição:\nUma fissura no tempo se abre e traz um fragmento de estrela à realidade. O impacto é tão poderoso que o espaço ao redor se distorce, quebrando a ordem natural por breves instantes.\n<br>\n<img src=\"https://tenor.com/view/meteor-moonfall-meteor-shower-hitting-the-mountain-rock-from-space-gif-23689946.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\nUm enorme meteoro cai sobre o campo de batalha após 1 turno de conjuração, causando dano extremo não-elemental em área massiva. Inimigos atingidos têm chance de perder o próximo turno devido ao colapso temporal.\n<br>\n<br>\nCusto: 850 de mana.\n<br>\nCooldown: 12 turnos.\n<br>\nDuração: 1 turno de preparação + impacto no turno seguinte.\n<br>\n<br>\nLimitações:\n<br>\n<br>\nO usuário deve permanecer completamente imóvel durante o turno de conjuração.\n<br>\nSe for interrompido (levando dano crítico, por exemplo), a magia falha e o mana é perdido.\n<br>\nO impacto atinge aliados se estiverem na área sem proteção.",
+    "categories": [
+      "Arcano",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Ultima — A Extinção",
+    "element": "arcane",
+    "description": "Descrição:\nA mais poderosa de todas as magias, considerada um legado das civilizações perdidas. Ultima destrói tudo sem discriminação — matéria, alma, tempo e magia. É a personificação da ruína.\n<br>\n<img src=\"https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/07/ultima-ffviii.jpg\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\n<br>\nCausa dano absoluto em todos os inimigos, ignorando resistências, imunidades e barreiras mágicas. Afeta o corpo e o espírito, deixando os sobreviventes com penalidades graves em todos os atributos por 3 turnos. Nenhuma outra magia pode ser usada no mesmo turno.\n<br>\n<br>\nCusto: 1000 de mana.\n<br>\nCooldown: 20 turnos.\n<br>\nDuração: Instantâneo (penalidades duram 3 turnos).\n<br>\nLimitações:\n<br>\n<br>\nPode ser usada apenas uma vez por dia (ou sessão).\n<br>\nO usuário perde 50% da própria vida máxima após o uso.\n<br>\nNão pode ser usada se o personagem estiver sob efeitos de status negativos.\n<br>\nApós usar Ultima, o usuário entra em estado de exaustão (sem magias por 2 turnos).\n<br>",
+    "categories": [
+      "Arcano",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Juízo Final — Eclipse do Nada",
+    "element": "dark",
+    "description": "Descrição:\nQuando essa magia é conjurada, o mundo parece parar. A luz se curva, os sons cessam, e uma esfera de trevas absolutas engole o campo. Dizem que quem encara o centro do eclipse vê sua própria morte.\n<br>\n<img src=\"https://lparchive.org/Final-Fantasy-VII/Update%2075/47-C74_047.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\n<br>\n<br>\nTodos os inimigos são atingidos por um colapso de energia sombria pura. Inimigos com afinidade à luz recebem dano massivo. Sobreviventes perdem acesso a habilidades mágicas por 2 turnos e entram em estado de medo (não podem se aproximar do conjurador).\n<br>\n<br>\nCusto: 1000 de mana + 25% da vida atual do usuário.\n<br>\nCooldown: 20 turnos.\n<br>\nDuração: Instantâneo (debuffs duram 2 turnos).\n<br>\nLimitações:\n<br>\n<br>\nSó pode ser usada à noite ou em total escuridão.\n<br>\nO usuário não pode receber cura no próximo turno após o uso.\n<br>\nSe houver outro aliado usuário de luz ativa no campo, a magia falha.",
+    "categories": [
+      "Escuridão",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Tornado — Lâmina dos Ventos Eternos",
+    "element": "air",
+    "description": "Descrição:\nO ar se rasga ao redor do conjurador. Um turbilhão de vento se forma, crescendo até atingir proporções colossais, afiado como lâminas invisíveis. Nada permanece de pé diante da tormenta.\n<br>\n<img src=\"https://realtimevfx.com/uploads/default/original/2X/0/0542869d047996c76d34837a69eebe331fa99ac3.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\n<br>\nEfeito:\n<br>\nCria um tornado de alta velocidade que permanece no campo por 2 turnos. Causa dano contínuo de vento e pode lançar inimigos ao ar, impedindo ações corpo a corpo. Barreiras leves e coberturas são destruídas.\n<br>\n<br>\nCusto: 600 de mana por turno.\n<br>\nCooldown: 10 turnos.\n<br>\nDuração: 2 turnos.\n<br>\nLimitações:\n<br>\n<br>\nO tornado pode se mover descontroladamente se o conjurador estiver distraído ou ferido.\n<br>\n<br>\nInimigos ancorados (magicamente ou por peso extremo) sofrem apenas metade do dano.\n<br>\nAfeta todos no campo, incluindo aliados mal posicionados.",
+    "categories": [
+      "Vento",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Flagelo — Toxina Absoluta",
+    "element": "status",
+    "description": "Descrição:\nO usuário invoca uma nuvem venenosa de origem mágica, feita com a essência da decomposição. Cada respiração que se dá dentro dela rouba parte da alma, enfraquecendo corpo e mente lentamente.\n<br>\n<img src=\"https://64.media.tumblr.com/dd7ff2c748379346714591cb69dbd4f8/tumblr_p3qpp5arTa1vz54q7o3_r2_540.gif\" alt=\" \" style=\"max-width: 100%;height: auto;margin: 0 auto;/* text-align: center; */display: flex;border-radius: 6px;\">\nEfeito:\nAplica um veneno mágico supremo em área que ignora resistência física. Inimigos contaminados têm suas defesas reduzidas, sofrem dano contínuo e não podem ser curados enquanto envenenados.\n<br><br>\nCusto: 550 de mana.\nCooldown: 8 turnos.\nDuração: 3 turnos.\n\nLimitações:\n\nInimigos não orgânicos (constructos, mortos-vivos, máquinas) são imunes.\n\nO usuário também deve usar uma barreira mágica para não ser afetado.\n\nCura mágica não pode ser usada no campo enquanto a nuvem estiver ativa.",
+    "categories": [
+      "Status",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Disaster — Chaga Celestial",
+    "element": "dimensional",
+    "description": "Descrição:\nUma magia proibida cuja existência é negada até pelos antigos grimórios. Disaster não é conjurada, ela manifesta-se através do corpo e alma do conjurador. Apenas um ser marcado pelo destino é capaz de invocá-la sem se desfazer na realidade. O céu escurece, as estrelas desaparecem, e a magia dilacera tudo que respira, pensa ou sente.\n<br>\n<br>\nEfeito:\n<br>\n<br>\nLibera uma onda de distorção mágica absoluta, causando dano mágico moderado em área e infligindo todos os efeitos negativos simultaneamente:\n<br>\n<br>\nVeneno, Paralisia, Cegueira, Silêncio, Confusão, Lentidão, Sangramento, Maldição e Petrificação Parcial.\nInimigos afetados também têm suas resistências mágicas reduzidas por 3 turnos.\n<br>\n<br>\nCusto: 1200 de mana + 40% da vida atual.\n<br>\nCooldown: 25 turnos.\n<br>\nDuração: 1 turno (de conjuração) + 5 turnos de efeitos.\n<br>\n<br>\nLimitações:\n<br>\n<br>\nPode ser usada apenas 1 vez por batalha.\n<br>\nO usuário entra em estado instável após conjuração: não pode usar nenhuma magia nos 2 turnos seguintes.\n<br>\nNão afeta entidades totalmente imunes a magia (como seres sem alma ou protegidos por artefatos absolutos).\n<br>\nAo conjurar Disaster, todos percebem que o conjurador não é completamente humano — o ar muda, a realidade se curva.",
+    "categories": [
+      "Dimensional",
+      "Supremo",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Faísca Ardente",
+    "element": "fire",
+    "description": "Descrição:\nO usuário estala os dedos, liberando uma pequena fagulha que ricocheteia no ar como uma centelha viva. Embora inofensiva à primeira vista, essa chama carrega a essência do fogo puro, causando queimaduras imediatas ao contato.\n<br>\n<br>\nEfeito:\nCausa um pequeno dano de fogo a um único alvo. Tem 15% de chance de aplicar o estado \"Queimando\" por 1 turno.\n<br>\n<br>\nCusto: 10 de mana\n<br>\nCooldown: 1 turno\n<br>\nDuração: Instantâneo\n<br>\n<br>\nLimitações:\n<br>\nInefetiva contra inimigos com resistência mágica ou natural ao fogo.",
+    "categories": [
+      "Fogo",
+      "Basico",
+      "Ataque",
+      "Longa"
+    ]
+  },
+  {
+    "title": "Chama Crescente",
+    "element": "fire",
+    "description": "Descrição:\nO conjurador forma uma esfera incandescente que pulsa em vermelho-alaranjado. Ao colidir com o inimigo, ela se espalha como brasas vivas que aderem à pele, roupas ou armadura, alimentando-se do ar ao redor.\n<br>\nEfeito:\nCausa dano inicial de fogo e aplica queimadura moderada por 2 turnos, causando dano a cada rodada.\n<br>\nCusto: 30 de mana\n<br>\nCooldown: 2 turnos\n<br>\nDuração: 2 turnos\n<br>\nLimitações:\nPode ser apagada por magias de água ou se o inimigo entrar em contato com um corpo líquido.",
+    "categories": [
+      "Fogo",
+      "Ataque",
+      "Longa",
+      "Basico"
+    ]
+  },
+  {
+    "title": "Toque Flamejante",
+    "element": "fire",
+    "description": "Descrição:\nO usuário envolve a própria arma em chamas mágicas, conferindo-lhe a fúria do fogo elementar. Cada golpe desferido queima carne e metal, deixando um rastro ardente atrás da lâmina ou punho.\n<br><br>\nEfeito:\n<br>\nConcede +30% de dano adicional de fogo em ataques ao contato corpo a corpo durante sua duração.\n<br>\n<br>\nCusto: 30 de mana\n<br>\nCooldown: 5 turnos\n<br>\nDuração: 3 turnos\n<br>\nLimitações:\n<br>\n<br>\nNão afeta armas à distância. Inútil caso o conjurador não esteja usando uma arma física ou magica.",
+    "categories": [
+      "Fogo",
+      "Basico",
+      "Encantamento",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Luz Incandescente",
+    "element": "fire",
+    "description": "Descrição:\nUm clarão intenso é gerado a partir da palma do conjurador, ofuscando todos em um raio curto. A luz, quente e mágica, desorienta os inimigos como se estivessem diante do próprio sol.\n<br><br>\nEfeito:\nReduz em 25% a chance de acerto de todos os inimigos próximos. Pode cegar temporariamente (1 turno).\n<br><br>\nCusto: 8 de mana<br>\nCooldown: 2 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:\nInimigos cegos, surdos ou com sentidos alternativos não são afetados.",
+    "categories": [
+      "Fogo",
+      "Basico",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Coluna de Fogo",
+    "element": "fire",
+    "description": "Descrição:<br>\nO usuário aponta para o chão, invocando uma erupção súbita de chamas que irrompe do solo em linha reta, como se o inferno estivesse tentando romper a superfície. A coluna atinge múltiplos inimigos em seu caminho, incendiando tudo em linha.\n<br><br>\nEfeito:<br>\nCausa alto dano de fogo em linha reta (até 3 alvos). Aplica estado \"Queimando\" por 2 turnos em todos os atingidos.\n<br><br>\nCusto: 25 de mana<br>\nCooldown: 4 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nInimigos muito rápidos podem evitar o ataque se forem alertados no turno anterior.",
+    "categories": [
+      "Fogo",
+      "Intermediario",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Armadura Flamejante",
+    "element": "fire",
+    "description": "Descrição:<br>\nO conjurador envolve o próprio corpo em uma armadura feita de fogo mágico que dança ao seu redor como uma fênix em fúria. Qualquer um que se aproxime ou o ataque corpo a corpo será queimado pelo calor infernal,ela é ativa passivamente quando ativa as formas da fenix.\n<br><br>\nEfeito:<br>\nReduz o dano físico recebido em 30%. Inimigos que atacam corpo a corpo recebem dano de fogo automático.\n<br><br>\nCusto: 30 de mana<br>\nCooldown: 5 turnos<br>\nDuração: 3 turnos<br>\n<br><br>\nLimitações:<br>\nNão protege contra dano mágico ou à distância. Fraca contra gelo ou água.",
+    "categories": [
+      "Fogo",
+      "Intermediario",
+      "Ataque",
+      "Defesa",
+      "Proteção"
+    ]
+  },
+  {
+    "title": "Tempestade Incandescente",
+    "element": "fire",
+    "description": "Descrição:<br>\nO céu escurece por um instante enquanto brasas começam a cair como chuva, seguida de pequenas explosões de fogo em área. É como se o próprio sol tivesse chorado lágrimas de destruição.\n<br><br>\nEfeito:<br>\nCausa dano moderado de fogo em todos os inimigos em área. 30% de chance de aplicar \"Queimando\".\n<br><br>\nCusto: 40 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 2 turnos<br>\n<br><br>\nLimitações:\nIneficaz contra inimigos em coberturas ou subterrâneo. Pode atingir aliados se não forem protegidos.",
+    "categories": [
+      "Fogo",
+      "Intermediario",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Inferno Ascendente",
+    "element": "fire",
+    "description": "Descrição:<br>\nO usuário canaliza a essência do fogo primordial, criando um campo onde pilares de chamas irrompem caoticamente do chão, como se a terra estivesse sendo consumida por um inferno ascendente. O calor é tão intenso que o ar ondula visivelmente.\n<br><br>\nEfeito:<br>\nAlto dano de fogo em área aleatória (atinge 4–6 alvos ao acaso). Aplica \"Queimando\" com dano dobrado por 3 turnos.\n<br><br>\nCusto: 80 de mana<br>\nCooldown: 7 turnos<br>\nDuração: 3 turnos<br>\n<br><br>\nLimitações:<br>\nInimigos que se movem constantemente têm chance de evitar parte do dano. Pode atingir aliados.",
+    "categories": [
+      "Fogo",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Calor Solar",
+    "element": "fire",
+    "description": "Descrição:<br>\nO conjurador invoca um fragmento do próprio sol, criando uma esfera flamejante que queima o ar ao seu redor. Quando arremessada, explode com o brilho de mil auroras, vaporizando tudo próximo.\n<br><br>\nEfeito:<br>\nDano massivo de fogo em área. Queima armaduras, destrói escudos e causa cegueira temporária (1 turno).\n<br><br>\nCusto: 120 de mana<br>\nCooldown: 10 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nNecessário 1 turno de preparação. Não pode ser usado em locais fechados ou subterrâneos. Alto risco de atingir aliados se mal posicionado.",
+    "categories": [
+      "Fogo",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Jato Cortante",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário molda a água como uma lâmina líquida e pressurizada, lançando-a como um jato afiado que corta armaduras leves com facilidade. O som emitido lembra o assobio de uma serpente faminta.\n<br><br>\nEfeito:<br>\nCausa dano perfurante de água a um único inimigo. 20% de chance de ignorar defesa física.\n<br><br>\nCusto: 12 de mana<br>\nCooldown: 2 turno<br>\nDuração: Instantâneo<br><br>\n<br>\nLimitações:\nPouco eficaz contra inimigos muito resistentes ou com escudos mágicos ativos.",
+    "categories": [
+      "Agua",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Névoa Refrescante",
+    "element": "water",
+    "description": "Descrição:<br>\nO conjurador libera uma névoa fria e suave que envolve aliados próximos, acalmando seus corpos e mentes. A umidade acelera a recuperação natural e dissipa efeitos negativos leves.\n<br>\n<br>\nEfeito:\nCura e mana levemente todos os aliados próximos e remove efeitos como cansaço e sangramento.\n<br>\nCusto: 30 de mana<br>\nCooldown: 3 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:<br>\nNão remove envenenamentos severos ou maldições. Cura leve.",
+    "categories": [
+      "Agua",
+      "Basico",
+      "Suporte",
+      "Cura"
+    ]
+  },
+  {
+    "title": "Bolha Protetora",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário forma uma bolha densa de água mágica ao redor de si ou de um aliado, amortecendo impactos e dissipando energia cinética. A bolha brilha em tons azul-esverdeados sob luz intensa.\n<br><br>\nEfeito:<br>\nAbsorve até 25%(não pode exceder 150 de dano) de dano físico e mágico. Quebra após ser rompida ou no fim da duração.\n<br><br>\nCusto: 20 de mana<br>\nCooldown: 4 turnos<br>\nDuração: 2 turnos<br>\n<br><br>\nLimitações:\nNão impede status negativos ou efeitos mentais. Uma bolha por vez.",
+    "categories": [
+      "Agua",
+      "Basico",
+      "Defesa",
+      "Suporte",
+      "Proteção"
+    ]
+  },
+  {
+    "title": "Correnteza Rasteira",
+    "element": "water",
+    "description": "Descrição:<br>\nCom um gesto rápido, o conjurador faz surgir uma onda rasteira que percorre o chão, tentando desequilibrar e derrubar inimigos. A água puxa com força, como se tivesse vontade própria.\n<br><br>\nEfeito:<br>\nDano leve a todos os inimigos próximos e chance de derrubar (desbalancear por 1 turno).\n<br><br>\nCusto: 25 de mana<br>\nCooldown: 3 turnos<br>\nDuração: Instantâneo<br>\n<br>\nLimitações:<br>\nIneficaz contra inimigos voadores ou muito pesados.",
+    "categories": [
+      "Agua",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Lança de Maré",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário solidifica uma lança feita de água mágica e lança-a com força esmagadora. Ao atingir o alvo, ela explode em múltiplas ondas internas, causando dano interno e externo.\n<br><br>\nEfeito:<br>\nDano alto a um único alvo. Ignora parcialmente armadura e escudos físicos.\n<br><br>\nCusto: 30 de mana<br>\nCooldown: 5 turnos<br>\nDuração: Instantâneo<br>\n<br>\nLimitações:<br>\nPode errar se o alvo for muito ágil.",
+    "categories": [
+      "Agua",
+      "Intermediario",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Cárcere Aquático",
+    "element": "water",
+    "description": "Descrição:<br>\nInvocando um redemoinho vertical, o conjurador aprisiona um inimigo dentro de uma esfera de água suspensa no ar. Lá dentro, o ar se torna escasso e o movimento, impossível.\n<br>\nEfeito:<br>\nPrende um inimigo por 1 turno. Causa dano por sufocamento e impede ações físicas.\n<br><br>\nCusto: 40 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:<br>\nInimigos grandes, voadores ou incorpóreos são imunes. O usuário não pode se mover enquanto mantém o cárcere.",
+    "categories": [
+      "Agua",
+      "Intermediario",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Manto da Correnteza",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário reveste o próprio corpo com água em movimento, que desvia ataques e aumenta sua agilidade. O som da correnteza envolve o conjurador como um manto invisível.\n<br><br>\nEfeito:<br>\n+40% de evasão e velocidade de movimento. Reduz em 25% o dano físico recebido.\n<br><br>\nCusto: 35 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 3 turnos<br>\n<br>\nLimitações:<br>\nNão protege contra dano mágico. Cancelado se o usuário for atingido por eletricidade.",
+    "categories": [
+      "Agua",
+      "Intermediario",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Dilúvio",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário convoca águas ancestrais que descem como uma avalanche líquida sobre o campo de batalha. O chão se torna um lago instável, afogando inimigos e apagando chamas.\n<br><br>\nEfeito:<br>\nDano massivo de água em área. Apaga todas as magias de fogo e empurra inimigos para longe, com chance de afogamento.\n<br><br>\nCusto: 100 de mana<br>\nCooldown: 8 turnos<br>\nDuração: 2 turnos<br>\n<br>\nLimitações:<br>\nAliados também podem ser arrastados. Ineficaz contra inimigos voadores.",
+    "categories": [
+      "Agua",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Espelho das Marés",
+    "element": "water",
+    "description": "Descrição:<br>\nO conjurador ergue uma muralha espelhada feita de água pura que reflete magias inimigas. O espelho se molda e vibra ao som do fluxo mágico, rejeitando ataques com elegância.\n<br><br>\nEfeito:<br>\nReflete as magia inimiga de volta ao lançador. Pode absorver até 3 magias antes de quebrar.\n<br><br>\nCusto: 120 de mana<br>\nCooldown: 10 turnos<br>\nDuração: 2 turnos ou até ser quebrado<br>\n<br>\nLimitações:\nNão reflete magias não direcionais (como em área). Inútil contra ataques físicos.",
+    "categories": [
+      "Agua",
+      "Avançada",
+      "Suporte",
+      "Contra-Ataque"
+    ]
+  },
+  {
+    "title": "Oceano Interior",
+    "element": "water",
+    "description": "Descrição:<br>\nO usuário entra em sintonia com a energia elemental da água e se transforma brevemente em um avatar líquido. Seu corpo torna-se fluido, difícil de atingir, e suas magias aquáticas se tornam devastadoras.\n<br><br>\nEfeito:<br>\nTorna o usuário imune a dano físico por 2 turnos. Magias de água causam o dobro de dano e não têm custo de mana durante a duração.\n<br><br>\nCusto: 120 de mana<br>\nCooldown: 12 turnos<br>\nDuração: 2 turnos<br>\n<br><br>\nLimitações:<br>\nApós o efeito, o usuário fica exausto e perde metade da mana total. Ineficaz se interrompido antes da ativação.",
+    "categories": [
+      "Agua",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Pedra Atirada",
+    "element": "earth",
+    "description": "Descrição:<br>\nO usuário ergue uma pequena pedra do solo e a arremessa com força mágica aumentada. A rocha gira no ar como um projétil bruto, capaz de quebrar ossos com impacto direto.\n<br><br>\nEfeito:<br>\nDano físico simples a um único inimigo. Chance de atordoamento leve (20%).\n<br><br>\nCusto: 12 de mana<br>\nCooldown: 1 turno<br>\nDuração: Instantâneo<br>\n<br>\nLimitações:<br>\nIneficaz contra alvos com resistência física elevada ou armadura pesada.",
+    "categories": [
+      "Terra",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Pele de Pedra",
+    "element": "earth",
+    "description": "Descrição:<br>\nUma fina camada de terra endurecida se espalha pela pele do alvo, oferecendo proteção extra contra ataques físicos. A armadura parece crescer como crostas minerais vivas.\n<br><br>\nEfeito:<br>\nAumenta em 30% a defesa física de um aliado.\n<br><br>\nCusto: 20 de mana<br>\nCooldown: 3 turnos<br>\nDuração: 3 turnos<br>\n<br>\nLimitações:<br>\nNão protege contra ataques mágicos. Reduz levemente a velocidade de movimento.",
+    "categories": [
+      "Terra",
+      "Basico",
+      "Defesa",
+      "Suporte",
+      "Proteção"
+    ]
+  },
+  {
+    "title": "Tremor Localizado",
+    "element": "earth",
+    "description": "Descrição:<br>\nO conjurador pisa com força e envia um pulso sísmico que faz o solo vibrar sob os pés dos inimigos. Um som grave ecoa, como o despertar de uma criatura ancestral nas profundezas.\n<br><br>\nEfeito:<br>\nDano leve em área + chance de derrubar inimigos (30%).\n<br><br>\nCusto: 25 de mana<br>\nCooldown: 4 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nNão afeta inimigos voadores ou aqueles com equilíbrio elevado.",
+    "categories": [
+      "Terra",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Espinhos Terrestres",
+    "element": "earth",
+    "description": "Descrição:<br>\nDo solo, pequenas lanças de pedra emergem em direção ao inimigo, perfurando com precisão as articulações e pontos frágeis.\n<br><br>\nEfeito:<br>\nDano físico moderado com chance de causar sangramento (20%).\n<br><br>\nCusto: 10 de mana<br>\nCooldown: 2 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nMenos eficaz contra armaduras completas ou inimigos imunes a perfurações.",
+    "categories": [
+      "Terra",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Prisão de Rocha",
+    "element": "earth",
+    "description": "Descrição:<br>\nFormando colunas e placas de pedra ao redor do inimigo, o usuário aprisiona o alvo em uma cela geológica que impede seus movimentos completamente.\n<br><br>\nEfeito:<br>\nPrende um inimigo por 1 turno. Impede qualquer ação física ou mágica.\n<br><br>\nCusto: 50 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:<br>\nInútil contra inimigos grandes, incorpóreos ou que possam se teleportar.",
+    "categories": [
+      "Terra",
+      "Intermediario",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Armadura de Cristal",
+    "element": "earth",
+    "description": "Descrição:<br>\nO conjurador envolve o próprio corpo (ou o de um aliado) com uma armadura feita de minerais puros que brilham à luz. A armadura absorve dano e reflete parte dele.\n<br><br>\nEfeito:<br>\nAbsorve até 120 pontos de dano físico. Reflete 15% do dano recebido ao atacante.\n<br><br>\nCusto: 40 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 3 turnos ou até ser destruída<br>\n<br>\nLimitações:<br>\nPesada — reduz velocidade em 20%. Vulnerável a magias de som ou rachaduras.<br>",
+    "categories": [
+      "Terra",
+      "Intermediario",
+      "Defesa",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Lança Subterrânea",
+    "element": "earth",
+    "description": "Descrição:<br>\nDo subsolo, uma estaca maciça emerge sob o inimigo, perfurando com força brutal e arremessando-o para o ar. O impacto gera tremores secundários.\n<br><br>\nEfeito:\nDano alto a um inimigo + chance de atordoar. Empurra o alvo para trás.\n<br><br>\nCusto: 45 de mana<br>\nCooldown: 5 turnos<br>\nDuração: Instantâneo<br>\n<br>\nLimitações:<br>\nImprecisa se o inimigo estiver em movimento constante. Não atravessa superfícies metálicas.",
+    "categories": [
+      "Terra",
+      "Intermediario",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Colosso de Pedra",
+    "element": "earth",
+    "description": "Descrição:<br>\nO conjurador invoca um golem ancestral feito de rocha viva, que luta ao seu lado com força descomunal. O colosso ecoa com os gritos do próprio planeta.\n<br><br>\nEfeito:\nInvoca um aliado elemental com vida própria (HP: alto, ataque: físico). O golem luta por 3 turnos.\n<br><br>\nCusto: 120 de mana\nCooldown: 10 turnos\nDuração: 3 turnos\n<br>\nLimitações:<br><br>\nPode ser destruído por magias anti-constructos ou habilidades elétricas. Só um colosso pode estar ativo por vez.",
+    "categories": [
+      "Terra",
+      "Avançada",
+      "Invocação",
+      "Ataque",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Sismo Aniquilador",
+    "element": "earth",
+    "description": "Descrição:<br>\nO usuário canaliza a fúria tectônica do planeta em uma área imensa, quebrando o solo, levantando destroços e engolindo tudo em rachaduras flamejantes.<br>\n<br>\nEfeito:<br>\nDano massivo a todos os inimigos no chão. Derruba e impede ações no turno seguinte.\n<br><br>\nCusto: 100 de mana<br>\nCooldown: 12 turnos<br>\nDuração: 2 turnos<br>\n<br>\nLimitações:<br>\nAliados também são afetados se estiverem na área. Não atinge voadores.",
+    "categories": [
+      "Terra",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Coração da Montanha",
+    "element": "earth",
+    "description": "Descrição:<br>\nAo entrar em meditação profunda, o conjurador se funde espiritualmente com a terra, tornando-se quase inabalável. Seu corpo se fortalece como uma montanha viva.\n<br><br>\nEfeito:<br>\nReduz todo dano recebido em 75%. Imunidade a status negativos. Magias de terra são instantâneas.\n<br>\nCusto: 120 de mana<br>\nCooldown: 14 turnos<br>\nDuração: 3 turnos<br>\n<br>\nLimitações:<br>\nDurante o efeito, o usuário não pode se mover. Vulnerável a magias de deslocamento.",
+    "categories": [
+      "Terra",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Corte de Vento",
+    "element": "air",
+    "description": "Descrição:<br>\nUma lâmina invisível de ar é arremessada em linha reta, cortando tudo em seu caminho com velocidade supersônica. Pode ferir antes mesmo do som atingir o alvo.\n<br><br>\nEfeito:<br>\nDano físico moderado de longo alcance. Ignora armaduras leves.\n<br>\nCusto: 8 de mana<br>\nCooldown: 1 turno<br>\nDuração: Instantâneo<br>\n<br>\nLimitações:<br>\nPouco eficaz contra escudos mágicos ou barreiras físicas espessas.",
+    "categories": [
+      "Vento",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Rajada",
+    "element": "air",
+    "description": "Descrição:<br>\nO conjurador invoca uma explosão repentina de vento, empurrando inimigos próximos e criando espaço no campo de batalha.<br>\n<br>\nEfeito:<br>\nEmpurra todos os inimigos ao redor em um pequeno raio. Chance de derrubar (15%).<br><br>\n\nCusto: 10 de mana<br>\nCooldown: 2 turnos<br>\nDuração: Instantâneo<br><br>\n\nLimitações:<br>\nNão causa dano. Inútil contra inimigos muito pesados ou ancorados.",
+    "categories": [
+      "Vento",
+      "Basico",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Asas Temporárias",
+    "element": "air",
+    "description": "Descrição:<br>\nCria correntes de vento sob os pés do conjurador, permitindo que ele flutue ou salte grandes distâncias brevemente.\n<br><br>\nEfeito:<br>\nPermite pulo duplo ou planagem. Aumenta evasão em 25%.\n<br>\nCusto: 12 de mana<br>\nCooldown: 4 turnos<br>\nDuração: 2 turnos<br>\n<br>\nLimitações:<br>\nNão permite voo verdadeiro. Perde-se o efeito se receber dano direto.",
+    "categories": [
+      "Vento",
+      "Basico",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Respiração Renovada",
+    "element": "air",
+    "description": "Descrição:<br>\nO ar ao redor é purificado magicamente, restaurando o foco e os sentidos do usuário. Traz leve vigor.<br>\n<br>\nEfeito:<br>\nCura leve e remove penalidades mentais (confusão, medo, sonolência).<br>\n<br>\nCusto: 10 de mana<br>\nCooldown: 3 turnos<br>\nDuração: Instantâneo<br><br>\n\nLimitações:<br>\nNão cura ferimentos físicos ou envenenamentos.<br>",
+    "categories": [
+      "Vento",
+      "Basico",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Cúpula de Vento",
+    "element": "",
+    "description": "Descrição:<br>\nCria um escudo esférico de ventos rotativos ao redor de si ou de um aliado, desviando projéteis e amortecendo ataques.\n<br><br>\nEfeito:<br>\nReduz em 50% o dano de ataques à distância. Anula flechas e magias leves.<br>\n<br>\nCusto: 30 de mana<br>\nCooldown: 5 turnos<br>\nDuração: 2 turnos<br>\n<br>\nLimitações:<br>\nFraco contra ataques corpo a corpo ou magias de impacto.",
+    "categories": [
+      "Vento",
+      "Intermediario",
+      "Suporte",
+      "Defesa"
+    ]
+  },
+  {
+    "title": "Corrente Ascendente",
+    "element": "air",
+    "description": "Descrição:<br>\nCria uma coluna de ar ascendente que impulsiona tudo em seu centro. Pode ser usada para elevar aliados ou desestabilizar inimigos.<br>\n<br><br>\nEfeito:<br>\nLança um alvo para cima. Causa dano leve + atordoamento na queda.<br><br>\n\nCusto: 40 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:<br>\nRequer foco no solo ou contato direto. Ineficaz contra alvos voadores.",
+    "categories": [
+      "Vento",
+      "Intermediario",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Furacão Contido",
+    "element": "air",
+    "description": "Descrição:<br>\nO usuário invoca um pequeno furacão girando em alta velocidade em uma área controlada, devastando tudo em seu raio. Os ventos rugem como uma fera enfurecida.<br>\n<br>\nEfeito:<br><br>\nGrande dano em área. Puxa inimigos para o centro e os mantém presos por 1 turno.\n<br><br>\nCusto: 90 de mana<br>\nCooldown: 10 turnos<br>\nDuração: 2 turnos<br>\n<br>\nLimitações:<br>\nAfeta aliados se estiverem próximos. Inútil em espaços fechados.",
+    "categories": [
+      "Vento",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Caminho Celeste",
+    "element": "air",
+    "description": "Descrição:<br>\nConjura plataformas de vento estável no ar, permitindo caminhar sobre elas como se fossem sólidas. Ideal para explorações verticais ou emboscadas aéreas.\n<br><br>\nEfeito:<br>\nPermite ao conjurador e aliados andar no ar. +25% evasão e alcance.<br>\n<br>\nCusto: 80 de mana<br>\nCooldown: 10 turnos<br>\nDuração: 3 turnos<br>\n<br>\nLimitações:<br>\nAlvos que caem dessas plataformas sofrem dano. Dispersa-se em áreas de tempestade.",
+    "categories": [
+      "Vento",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Avatar da Tempestade",
+    "element": "air",
+    "description": "Descrição:<br>\nO conjurador se transforma temporariamente em um ser feito de vento e trovão. Seu corpo se torna quase intangível, seus golpes são elétricos, e seus movimentos, impossíveis de prever.<br>\n<br>\nEfeito:<br>\n+50% velocidade, +30% dano mágico. Imunidade a ataques físicos e desaceleração.<br>\n<br>\nCusto: 110 de mana<br>\nCooldown: 14 turnos<br>\nDuração: 3 turnos<br>\n<br>\nLimitações:<br>\nNão pode usar magias de outros elementos nesse estado. Vulnerável a magias de gelo ou gravidade.",
+    "categories": [
+      "Vento",
+      "Avançada",
+      "Invocação",
+      "Ataque",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Faísca",
+    "element": "lightning",
+    "description": "Descrição:<br>\nUm estalo de energia é disparado dos dedos do conjurador. Serve tanto para atacar quanto para acender objetos.\n<br><br>\nEfeito:\nCausa dano elétrico leve a um alvo. Pode acender fogueiras ou explodir pólvora.\n<br>\nCusto: 6 de mana<br>\nCooldown: 1 turno<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nAlcance curto. Pouco efetivo contra armaduras.",
+    "categories": [
+      "Ataque",
+      "Curta",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Estalo Elétrico",
+    "element": "lightning",
+    "description": "Descrição:<br>\nUma descarga elétrica percorre o chão ou superfícies metálicas, atingindo os pés dos inimigos mais próximos.\n<br><br>\nEfeito:<br>\nCausa dano leve e pode paralisar por 1 turno (10% de chance).\n<br><br>\nCusto: 10 de mana<br>\nCooldown: 2 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nExige solo condutor ou ambiente úmido para funcionar bem.",
+    "categories": [
+      "Ataque",
+      "Medio",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Ímã Vivo",
+    "element": "lightning",
+    "description": "Descrição:<br>\nCarrega o corpo do usuário com magnetismo, atraindo ou repelindo objetos metálicos leves ao redor.<br>\n<br>\nEfeito:<br>\nPode atrair armas pequenas ou desviar ataques metálicos (10% chance de falha do inimigo).\n<br><br>\nCusto: 14 de mana<br>\nCooldown: 4 turnos<br>\nDuração: 2 turnos<br>\n<br><br>\nLimitações:<br>\nIneficaz contra armas mágicas ou madeira/pedra. Não repele projéteis mágicos.",
+    "categories": [
+      "Defesa",
+      "Raio",
+      "Esquiva"
+    ]
+  },
+  {
+    "title": "Luz Estroboscópica",
+    "element": "lightning",
+    "description": "Descrição:<br>\nEmite pulsos de luz elétrica ritmados que confundem a visão de inimigos e interrompem conjurações frágeis.<br>\n<br>\nEfeito:<br>\nCausa confusão leve. Interrompe conjuração de magias com tempo de canalização.\n<br><br>\nCusto: 12 de mana<br>\nCooldown: 3 turnos<br>\nDuração: 1 turno<br>\n<br>\nLimitações:<br>\nAfeta apenas inimigos em linha de visão. Pode também cegar aliados.",
+    "categories": [
+      "Controle",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Raio Concentrado",
+    "element": "lightning",
+    "description": "Descrição:<br>\nCanaliza energia elétrica em um único ponto, liberando um feixe fulminante com precisão cirúrgica.<br>\n<br>\nEfeito:<br>\nDano elétrico médio com chance de perfuração e paralisia (20%).\n<br><br>\nCusto: 35 de mana<br>\nCooldown: 5 turnos<br>\nDuração: Instantâneo<br>\n<br><br>\nLimitações:<br>\nRequer concentração por 1 turno. Pode ser interrompido.",
+    "categories": [
+      "Ataque",
+      "Medio",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Campo de Estática",
+    "element": "lightning",
+    "description": "Descrição:<br>\nCria uma zona eletrificada ao redor do conjurador, sobrecarregando sensores e dificultando movimentos de inimigos próximos.<br>\n<br>\nEfeito:<br>\nReduz acerto de inimigos em 20% e chance de falha em magias com precisão.<br><br>\n\nCusto: 30 de mana<br>\nCooldown: 6 turnos<br>\nDuração: 2 turnos<br>\n<br><br>\nLimitações:<br>\nAfeta apenas inimigos em raio curto. Não impede dano direto.",
+    "categories": [
+      "Ataque",
+      "Curta",
+      "Controle",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Corrente Cadente",
+    "element": "light",
+    "description": "Descrição:<br>\nUma corrente elétrica salta de inimigo em inimigo, ligando-os por fios de energia que os chocam simultaneamente.\n<br><br>\nEfeito:<br>\nDano médio a até 4 inimigos. Aplica \"choque ligado\": se um sofrer dano, todos sofrem parte.<br>\n<br><br>\nCusto: 40 de mana\nCooldown: 7 turnos\nDuração: 2 turnos\n<br><br>\nLimitações:\nFalha se os inimigos estiverem distantes. Fraco contra inimigos isolados.<br>",
+    "categories": [
+      "Ataque",
+      "Longa",
+      "Raio"
+    ]
+  },
+  {
+    "title": "Acelerar",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Concede agilidade sobrenatural ao alvo, permitindo que ele se mova e reaja mais rapidamente que o normal.<br><br>Efeito: +20% de velocidade e esquiva.<br><br>Custo: 30 de mana<br>Cooldown: 3 turnos<br>Duração: 2 turnos<br><br>Limitações: Não acumulável. Não funciona em quem já estiver sob efeito de lentidão.</p>",
+    "categories": [
+      "☠️ Status",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Fortificar",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Cria um revestimento mágico sobre a pele do alvo, tornando-o mais resistente a ataques físicos.<br><br>Efeito: +15% de defesa física.<br><br>Custo: 35 de mana<br>Cooldown: 4 turnos<br>Duração: 3 turnos<br><br>Limitações: Inútil contra ataques mágicos. Apenas um buff de defesa pode estar ativo por vez.</p>",
+    "categories": [
+      "☠️ Status",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Enfraquecer",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Envolve o inimigo em uma aura debilitante que drena sua força.<br><br>Efeito: -20% de ataque físico do inimigo.<br><br>Custo: 25 de mana<br>Cooldown: 4 turnos<br>Duração: 2 turnos<br><br>Limitações: Afeta apenas inimigos com força física. Não empilha com outros debuffs de ataque.</p>",
+    "categories": [
+      "☠️ Status",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Confundir",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Cria ilusões mentais sutis, fazendo o inimigo errar seus alvos.<br><br>Efeito: 50% de chance de errar habilidades ou ataques.<br><br>Custo: 30 de mana<br>Cooldown: 5 turnos<br>Duração: 1 turno<br><br>Limitações: Afeta apenas seres com consciência. Pode ser anulado por imunidade mental.</p>",
+    "categories": [
+      "☠️ Status",
+      "Básica",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Espírito de Ferro",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Infunde o corpo de um aliado com tenacidade sobrenatural, tornando-o mais resistente a qualquer tipo de controle.<br><br>Efeito: Imunidade a efeitos de controle (medo, confusão, paralisia).<br><br>Custo: 70 de mana<br>Cooldown: 6 turnos<br>Duração: 2 turnos<br><br>Limitações: Não protege contra dano. Pode ser dissipado por magias anti-buff.</p>",
+    "categories": [
+      "☠️ Status",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Corrupção Lenta",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Implanta um enfraquecimento mágico no alvo que cresce com o tempo, tornando-o cada vez mais fraco.<br><br>Efeito: A cada turno: -5% de ataque, defesa e velocidade (acumula até -15%).<br><br>Custo: 60 de mana<br>Cooldown: 7 turnos<br>Duração: 3 turnos<br><br>Limitações: Pode ser removido com cura de status. Só afeta um inimigo por vez.</p>",
+    "categories": [
+      "☠️ Status",
+      "Intermediária",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Potencializar Magia",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Amplifica o próximo feitiço lançado por um aliado, carregando-o com energia instável.<br><br>Efeito: Aumenta em 40% o poder da próxima magia usada.<br><br>Custo: 65 de mana<br>Cooldown: 6 turnos<br>Duração: Até o próximo feitiço<br><br>Limitações: Não se aplica a magias de suporte. Só pode estar ativo em um aliado por vez.</p>",
+    "categories": [
+      "☠️ Status",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Grande Purificação",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Libera uma onda mágica branca que remove todos os efeitos negativos de um grupo de aliados.<br><br>Efeito: Remove envenenamento, lentidão, confusão, medo e outros status debilitantes.<br><br>Custo: 150 de mana<br>Cooldown: 10 turnos<br>Duração: Instantâneo<br><br>Limitações: Não cura HP. Inútil se os aliados estiverem selados contra cura.</p>",
+    "categories": [
+      "☠️ Status",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Tempo Congelado",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Isola um inimigo em uma prisão de tempo, impedindo-o de agir momentaneamente.<br><br>Efeito: Inimigo perde 1 turno (não age nem reage).<br><br>Custo: 180 de mana<br>Cooldown: 10 turnos<br>Duração: 1 turno<br><br>Limitações: Inútil contra criaturas atemporais, chefes, ou com resistência temporal.</p>",
+    "categories": [
+      "☠️ Status",
+      "Avançada",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Aura Suprema",
+    "element": "☠️ Status",
+    "description": "<p>Descrição: Conjura uma aura brilhante que potencializa todas as capacidades dos aliados ao redor do conjurador.<br><br>Efeito: +25% de ataque, defesa, velocidade e magia.<br><br>Custo: 200 de mana<br>Cooldown: 12 turnos<br>Duração: 3 turnos<br><br>Limitações: Afeta apenas aliados num raio próximo. O conjurador não recebe o bônus.</p>",
+    "categories": [
+      "☠️ Status",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Toque Sombrio",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: O usuário canaliza sombras em sua mão, tocando um inimigo e drenando parte de sua força vital.<br><br>Efeito: Causa dano leve e restaura parte do HP do conjurador.<br><br>Custo: 25 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Névoa Negra",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Expele uma neblina densa e escura que obscurece a visão em uma pequena área.<br><br>Efeito: Reduz acerto de ataques à distância. Permite movimentação furtiva.<br><br>Custo: 30 de mana<br>Cooldown: 3 turnos<br>Duração: 2 turnos<br><br>Limitações: Afeta aliados e inimigos igualmente. Dissipa com vento ou luz intensa.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Básica",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Sussurros do Vazio",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Envia vozes enlouquecedoras para a mente de um inimigo, confundindo seus pensamentos.<br><br>Efeito: Aplica 'Confusão leve' – 40% de chance de errar a ação no próximo turno.<br><br>Custo: 35 de mana<br>Cooldown: 4 turnos<br>Duração: 1 turno<br><br>Limitações: Afeta apenas criaturas com mente consciente. Ineficaz contra máquinas ou criaturas sem alma.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Lâmina das Sombras",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Invoca uma adaga feita de trevas líquidas, letal e quase invisível à vista.<br><br>Efeito: Causa dano físico/mágico híbrido. Ignora 30% da armadura do alvo.<br><br>Custo: 40 de mana<br>Cooldown: 4 turnos<br>Duração: 2 turnos<br><br>Limitações: Perde eficácia contra criaturas blindadas com luz ou escudos mágicos.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Prisão de Sombras",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Invoca tentáculos sombrios que brotam do chão, agarrando o inimigo e limitando seus movimentos.<br><br>Efeito: Paralisa um inimigo por 1 turno. Aplica penalidade de esquiva no turno seguinte.<br><br>Custo: 65 de mana<br>Cooldown: 6 turnos<br>Duração: 1 turno<br><br>Limitações: Não funciona em alvos voando ou incorpóreos. Pode ser evitado com agilidade extrema.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Olhar da Morte",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: O usuário fixa os olhos em um inimigo e manifesta uma presença de pura hostilidade, fazendo-o sentir a própria mortalidade.<br><br>Efeito: Aplica 'Medo' – inimigo perde o turno ou foge temporariamente.<br><br>Custo: 70 de mana<br>Cooldown: 7 turnos<br>Duração: 1 turno<br><br>Limitações: Inútil contra criaturas sem emoção ou com resistência a efeitos mentais.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Eclipse Interior",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Planta uma sombra dentro do corpo do inimigo, obscurecendo seus pensamentos e sufocando sua magia.<br><br>Efeito: Bloqueia a regeneração de mana + reduz o poder mágico em 30%.<br><br>Custo: 75 de mana<br>Cooldown: 8 turnos<br>Duração: 3 turnos<br><br>Limitações: Afeta apenas conjuradores ou criaturas mágicas. Não impede uso de magias, apenas enfraquece.</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Intermediária",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Pacto com o Vazio",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: O usuário oferece parte de sua alma ao Vazio em troca de poder, tornando-se um avatar das trevas momentaneamente.<br><br>Efeito: Dano, esquiva e velocidade aumentam 50%. Cada ataque do usuário drena vida e mana do inimigo.<br><br>Custo: 200 de mana + 10% do HP atual<br>Cooldown: 12 turnos<br>Duração: 3 turnos<br><br>Limitações: Ao terminar, o usuário sofre um estado de fraqueza severa (redução de atributos por 2 turnos).</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Desespero Profano",
+    "element": "🌑 Escuridão",
+    "description": "<p>Descrição: Invoca uma esfera de pura escuridão que consome luz e esperança, drenando a energia de tudo ao redor.<br><br>Efeito: Dano contínuo em área. Aliados e inimigos sofrem perda de mana por turno. Anula buffs de luz.<br><br>Custo: 160 de mana<br>Cooldown: 10 turnos<br>Duração: 3 turnos<br><br>Limitações: Afeta aliados se estiverem dentro da área. Precisa de tempo para conjurar (1 turno de preparo).</p>",
+    "categories": [
+      "🌑 Escuridão",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Rajada Solar",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: O conjurador dispara um feixe concentrado de luz solar, quente como o sol do meio-dia, que fere os inimigos e os cega brevemente.<br><br>Efeito: Dano mágico direto + 30% de chance de aplicar cegueira (1 turno).<br><br>Custo: 25 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo<br><br>Limitações: Ineficaz em inimigos cegos, mortos-vivos ou acostumados à luz intensa.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Cura Radiante",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Invoca uma luz quente e reconfortante que fecha feridas e restaura a energia vital de um aliado.<br><br>Efeito: Cura leve de HP + remove envenenamento ou sangramento ativo.<br><br>Custo: 30 de mana<br>Cooldown: 3 turnos<br>Duração: Instantâneo<br><br>Limitações: Não remove doenças mágicas nem cura membros perdidos. Afeta apenas um alvo por vez.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Brilho Sagrado",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Emite uma aura de luz intensa ao redor do conjurador, repelindo criaturas das sombras.<br><br>Efeito: Empurra mortos-vivos, demônios e entidades sombrias próximos. Causa dano leve de luz a criaturas das trevas.<br><br>Custo: 35 de mana<br>Cooldown: 4 turnos<br>Duração: 1 turno<br><br>Limitações: Não afeta seres não sombrios. Pode revelar aliados escondidos acidentalmente.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Lâmina de Luz",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Materializa uma espada feita de pura luz radiante que perfura a escuridão.<br><br>Efeito: Causa dano mágico cortante e atravessa barreiras sombrias. É eficaz contra mortos-vivos e espectros.<br><br>Custo: 40 de mana<br>Cooldown: 4 turnos<br>Duração: 2 turnos<br><br>Limitações: Não pode ser usada se o usuário estiver cego. A espada se dissipa se mergulhada em escuridão total.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Pilar Celestial",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Invoca uma coluna vertical de luz divina que desce dos céus e incinera tudo em seu centro.<br><br>Efeito: Dano mágico elevado em área pequena + 50% de chance de aplicar 'Marcação Sagrada' (dano amplificado por luz nos próximos 2 turnos).<br><br>Custo: 70 de mana<br>Cooldown: 5 turnos<br>Duração: Instantâneo<br><br>Limitações: Só pode ser usada em locais com céu visível ou fonte de luz.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Intermediária",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Escudo Iluminado",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Cria um campo de luz protetora ao redor do conjurador ou de um aliado, bloqueando ataques mágicos.<br><br>Efeito: Absorve até 150 de dano mágico. Também remove efeitos negativos de sombra.<br><br>Custo: 60 de mana<br>Cooldown: 6 turnos<br>Duração: 2 turnos<br><br>Limitações: Ineficaz contra dano físico. Uma vez quebrado, não pode ser recastado imediatamente no mesmo alvo.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Revelação",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Emite um clarão divino que revela todas as criaturas invisíveis, ilusões e magias ocultas em uma área.<br><br>Efeito: Cancela furtividade e invisibilidade em área. Identifica criaturas disfarçadas ou enfeitiçadas.<br><br>Custo: 65 de mana<br>Cooldown: 8 turnos<br>Duração: 1 turno<br><br>Limitações: Revela todos — aliados e inimigos. Não dissipa magias dimensionais.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Julgamento dos Céus",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: O conjurador levanta o braço aos céus e invoca a justiça divina, lançando múltiplas lanças de luz sobre seus inimigos.<br><br>Efeito: Causa dano massivo de luz a até 5 alvos. Mortos-vivos ou demônios sofrem dano dobrado.<br><br>Custo: 140 de mana<br>Cooldown: 10 turnos<br>Duração: Instantâneo<br><br>Limitações: A luz pode atingir aliados caso estejam em linha de visão. Ineficaz contra criaturas elementais de luz.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Égide Solar",
+    "element": "☀️ Luz",
+    "description": "<p>Descrição: Cria uma barreira absoluta de luz dourada ao redor de todos os aliados próximos, protegendo-os da morte.<br><br>Efeito: Previne que os aliados caiam a 0 de HP por 2 turnos (mantém com 1 HP mesmo após ataques letais).<br><br>Custo: 180 de mana<br>Cooldown: 12 turnos<br>Duração: 2 turnos<br><br>Limitações: Não cura, apenas evita a morte. Se o alvo sofrer dano excessivo, entrará em estado crítico após o efeito.</p>",
+    "categories": [
+      "☀️ Luz",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Fenda Espacial",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: O conjurador rasga brevemente o tecido da realidade, criando uma fenda que corta como uma lâmina invisível.<br><br>Efeito: Causa dano cortante mágico ignorando armaduras físicas em linha reta. Pode atingir múltiplos inimigos em linha.<br><br>Custo: 30 de mana<br>Cooldown: 3 turnos<br>Duração: Instantâneo<br><br>Limitações: Não atravessa barreiras mágicas. Alvos com percepção dimensional elevada podem evitar.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Passo Sombrio",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Dobra o espaço entre dois pontos e permite ao usuário se mover instantaneamente.<br><br>Efeito: Teletransporte instantâneo para até 10 metros de distância (linha de visão). Ignora obstáculos físicos.<br><br>Custo: 25 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo<br><br>Limitações: Não pode atravessar áreas com selos anti-magia. Uso excessivo pode causar náusea dimensional.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Eco Dimensional",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Invoca uma duplicata espectral de si mesmo de um plano paralelo para confundir inimigos.<br><br>Efeito: Cria um clone ilusório que atrai ataques. Tem 50% de chance de desviar o próximo ataque direcionado ao usuário.<br><br>Custo: 35 de mana<br>Cooldown: 4 turnos<br>Duração: 2 turnos<br><br>Limitações: Clone não pode atacar. Dissipa-se com um único golpe direto.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Pressão de Vácuo",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Manipula a ausência de ar e matéria em um ponto, criando um vácuo súbito que suga e pressiona.<br><br>Efeito: Puxa inimigos próximos para o centro e causa dano mágico. Pode desestabilizar voadores ou criaturas leves.<br><br>Custo: 40 de mana<br>Cooldown: 5 turnos<br>Duração: 1 turno<br><br>Limitações: Não afeta seres muito pesados ou ancorados. Pode puxar aliados se estiverem perto.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Básica",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Prisão Interdimensional",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: O conjurador abre uma brecha para uma prisão de outro plano e aprisiona temporariamente um inimigo nela.<br><br>Efeito: Remove um inimigo do campo de batalha por 1 turno, impossibilitando qualquer ação ou interação.<br><br>Custo: 70 de mana<br>Cooldown: 6 turnos<br>Duração: 1 turno<br><br>Limitações: O alvo retorna no próximo turno ileso. Imunes a controle mental podem resistir.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Estilhaçar Realidade",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Fragmenta o espaço ao redor de um alvo, distorcendo a matéria ao ponto de causar dor e desorientação.<br><br>Efeito: Causa dano mágico moderado em área e aplica confusão (alvo pode atacar aliados) por 1 turno.<br><br>Custo: 65 de mana<br>Cooldown: 5 turnos<br>Duração: 1 turno<br><br>Limitações: Aliados na área podem ser afetados. Imunes a encantamentos são menos suscetíveis à confusão.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Intermediária",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Dobra Defensiva",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Enrola uma dobra no espaço ao redor do conjurador, desviando ataques por pura distorção espacial.<br><br>Efeito: Cria uma barreira invisível que tem 70% de chance de desviar ataques físicos e projéteis mágicos.<br><br>Custo: 80 de mana<br>Cooldown: 6 turnos<br>Duração: 2 turnos<br><br>Limitações: Não impede ataques em área. Vulnerável a ataques que ignoram espaço (ex: temporais ou espirituais).</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Ruptura Dimensional",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Abre uma fenda instável entre planos que engole tudo ao redor em caos dimensional.<br><br>Efeito: Causa dano massivo em área e pode teleportar aleatoriamente os inimigos para locais fora de combate por 1 turno.<br><br>Custo: 160 de mana<br>Cooldown: 10 turnos<br>Duração: 1 turno<br><br>Limitações: Pode afetar aliados se mal posicionada. A fenda pode deixar resíduos perigosos de energia caótica.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Caminho do Infinito",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: O conjurador entra em sintonia com múltiplas dimensões, tornando-se impossível de atingir diretamente.<br><br>Efeito: Durante 2 turnos, o usuário se torna intangível e imune a todos os ataques físicos e mágicos direcionados.<br><br>Custo: 200 de mana<br>Cooldown: 12 turnos<br>Duração: 2 turnos<br><br>Limitações: Não pode atacar enquanto estiver intangível. Algumas entidades extradimensionais ainda podem vê-lo.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Chamado do Abismo",
+    "element": "🌌 Dimensional",
+    "description": "<p>Descrição: Invoca uma criatura ancestral de outro plano, feita de pura entropia, para lutar temporariamente ao lado do conjurador.<br><br>Efeito: Invoca um Devorador de Véus, que ataca com garras etéreas, pode atravessar barreiras e se alimenta de magia.<br><br>Custo: 220 de mana<br>Cooldown: 15 turnos<br>Duração: 3 turnos<br><br>Limitações: Criatura não pode ser controlada completamente. Existe o risco de que ela ataque aliados ou se recuse a obedecer.</p>",
+    "categories": [
+      "🌌 Dimensional",
+      "Avançada",
+      "Invocação"
+    ]
+  },
+  {
+    "title": "Aceleração Menor",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: O conjurador canaliza energia temporal para acelerar ligeiramente seus próprios reflexos.<br><br>Efeito: +20% de velocidade por 2 turnos. Permite agir antes na iniciativa ou desviar com mais facilidade.<br><br>Custo: 20 de mana<br>Cooldown: 3 turnos<br>Duração: 2 turnos<br><br>Limitações: Não afeta velocidade de lançamento de magias. Não acumula com outros efeitos de aceleração.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Retardo",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Altera levemente o fluxo do tempo em torno de um inimigo, tornando seus movimentos mais lentos.<br><br>Efeito: -15% de velocidade e precisão por 1 turno.<br><br>Custo: 15 de mana<br>Cooldown: 2 turnos<br>Duração: 1 turno<br><br>Limitações: Afeta apenas um alvo por vez. Pode ser resistido com força de vontade elevada.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Marcar Instante",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Cria um ponto temporal fixo que o usuário pode retornar instantaneamente.<br><br>Efeito: Marca o tempo atual; pode retornar à posição e estado de mana/vida daquele momento a qualquer momento dentro de 3 turnos.<br><br>Custo: 30 de mana<br>Cooldown: 5 turnos<br>Duração: Até 3 turnos<br><br>Limitações: Pode ser usado apenas uma vez por marca. Se o usuário morrer, não pode retornar.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Envelhecimento Rápido",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Faz com que uma arma ou objeto envelheça rapidamente, tornando-se frágil.<br><br>Efeito: Reduz em 30% a durabilidade ou resistência de uma arma/escudo por 2 turnos.<br><br>Custo: 25 de mana<br>Cooldown: 4 turnos<br>Duração: 2 turnos<br><br>Limitações: Afeta apenas equipamentos não encantados. Ineficaz em artefatos mágicos.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Distorção Temporal",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Cria uma zona instável onde o tempo acelera e desacelera aleatoriamente para quem estiver dentro.<br><br>Efeito: Inimigos têm 50% de chance de perder ou repetir ações por 1 turno. Aliados ganham 25% de chance de agir duas vezes.<br><br>Custo: 60 de mana<br>Cooldown: 6 turnos<br>Duração: 1 turno<br><br>Limitações: Afeta aliados e inimigos igualmente. Inimigos com resistência temporal são menos afetados.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Tempo Congelado (Tempo)",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Congela completamente um alvo no tempo, impedindo qualquer movimento.<br><br>Efeito: Paralisa 1 inimigo por 1 turno. O alvo não sofre dano nem pode agir.<br><br>Custo: 70 de mana<br>Cooldown: 8 turnos<br>Duração: 1 turno<br><br>Limitações: Afeta apenas alvos vivos. Não pode ser usado duas vezes seguidas no mesmo inimigo.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Recuperação Temporal",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Restaura o corpo de um aliado a um estado anterior, como se o tempo fosse revertido levemente.<br><br>Efeito: Cura 50% do dano sofrido nos últimos 2 turnos e remove efeitos negativos recentes.<br><br>Custo: 80 de mana<br>Cooldown: 6 turnos<br>Duração: Instantâneo<br><br>Limitações: Não remove maldições nem efeitos permanentes. Ineficaz contra morte instantânea.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Parar o Tempo",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: O conjurador suspende completamente o tempo por um breve momento, tornando-se o único capaz de se mover.<br><br>Efeito: O usuário age por 2 turnos completos enquanto o tempo está parado para todos os demais.<br><br>Custo: 180 de mana<br>Cooldown: 12 turnos<br>Duração: 2 turnos do conjurador<br><br>Limitações: Não pode atacar diretamente durante o tempo parado, apenas se mover ou preparar magias. Exige muita concentração.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Avançada",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Retrocesso Temporal",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: Retorna a realidade a um estado anterior, revertendo ferimentos, destruição e até efeitos mágicos recentes em área.<br><br>Efeito: Revive aliados mortos nos últimos 2 turnos, reverte até 50% do dano em área e desfaz magias lançadas recentemente.<br><br>Custo: 220 de mana<br>Cooldown: 15 turnos<br>Duração: Instantâneo<br><br>Limitações: Só pode ser usado uma vez por combate. Não afeta ferimentos causados por magias de tempo ou forças cósmicas.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Drenar Tempo",
+    "element": "⏳ Tempo",
+    "description": "<p>Descrição: O conjurador rouba tempo vital de todos os alvos ao redor, acelerando a si mesmo e enfraquecendo os outros.<br><br>Efeito: Inimigos sofrem lentidão (-30% velocidade, -20% força) e o conjurador ganha aceleração (+30% de velocidade, -25% cooldown) por 3 turnos.<br><br>Custo: 160 de mana<br>Cooldown: 10 turnos<br>Duração: 3 turnos<br><br>Limitações: Afeta apenas seres vivos. Pode ser resistido parcialmente por inimigos com poder temporal próprio.</p>",
+    "categories": [
+      "⏳ Tempo",
+      "Avançada",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Setas Arcanas",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: O conjurador dispara múltiplas flechas de energia mágica pura que perseguem automaticamente o alvo.<br><br>Efeito: Dano leve múltiplo (até 3 acertos). Sempre acerta, exceto contra barreiras mágicas.<br><br>Custo: 15 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo<br><br>Limitações: Pode ser dissipado por magia antiarcana. Fraco contra resistências mágicas elevadas.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Mão Etérea",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Cria uma mão translúcida feita de energia arcana que pode agarrar, empurrar ou interagir com objetos à distância.<br><br>Efeito: Pode desarmar inimigos, ativar armadilhas ou mover objetos pesados.<br><br>Custo: 10 de mana<br>Cooldown: 3 turnos<br>Duração: 2 turnos<br><br>Limitações: Não causa dano direto. Inútil contra inimigos muito grandes ou incorpóreos.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Escudo Místico",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Evoca uma barreira de energia arcana flutuante que bloqueia o próximo ataque mágico.<br><br>Efeito: Anula uma única magia hostil de até nível intermediário.<br><br>Custo: 18 de mana<br>Cooldown: 4 turnos<br>Duração: Até ser quebrado ou durar 1 turno<br><br>Limitações: Não bloqueia ataques físicos. Dissipado por magias de silêncio ou antimagia.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Básica",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Faísca de Mana",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Lança uma pequena explosão de energia instável que colide com o inimigo e causa distorções breves na magia.<br><br>Efeito: Dano leve + 25% de chance de cancelar a próxima magia do inimigo.<br><br>Custo: 12 de mana<br>Cooldown: 3 turnos<br>Duração: Instantâneo<br><br>Limitações: Chance de falhar se o inimigo tiver resistência mágica alta.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Prisão Rúnica",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Desenha runas no ar que se entrelaçam para formar uma prisão de energia pura ao redor do inimigo.<br><br>Efeito: Impede movimentação e uso de magias por 1 turno. Dano leve ao entrar em contato com a prisão.<br><br>Custo: 40 de mana<br>Cooldown: 6 turnos<br>Duração: 1 turno<br><br>Limitações: Inimigos com resistência arcana podem escapar. Afeta apenas um alvo por vez.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Distorção Espacial",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Altera a realidade em um pequeno espaço, deslocando o usuário ou um alvo para outra posição instantaneamente.<br><br>Efeito: Teletransporte instantâneo para até 10 metros. Pode ser usado para fugir ou reposicionar aliados/inimigos.<br><br>Custo: 35 de mana<br>Cooldown: 5 turnos<br>Duração: Instantâneo<br><br>Limitações: Não atravessa barreiras mágicas ou campos anti-teleporte.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Círculo de Amplificação",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Cria um círculo arcano no chão que amplifica todo tipo de magia dentro dele.<br><br>Efeito: +30% de poder mágico para aliados dentro do círculo.<br><br>Custo: 50 de mana<br>Cooldown: 8 turnos<br>Duração: 2 turnos<br><br>Limitações: Fixo no chão. Alvos precisam permanecer dentro para obter os efeitos. Pode ser destruído por antimagia.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Colapso da Realidade",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Cria um ponto de instabilidade mágica que implode sobre si mesmo, colapsando tudo ao redor com força brutal.<br><br>Efeito: Grande dano em área + chance de desintegração (eliminação instantânea em alvos fracos). Ignora defesas físicas.<br><br>Custo: 120 de mana<br>Cooldown: 12 turnos<br>Duração: Instantâneo<br><br>Limitações: Afeta aliados se estiverem próximos. Não funciona em zonas de silêncio mágico.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Olho da Verdade Arcana",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: Invoca um olho místico flutuante que vê através de todas as ilusões, disfarces e magias ocultas.<br><br>Efeito: Revela magias invisíveis, inimigos escondidos e verdades ocultas. +25% de acerto contra inimigos ilusórios.<br><br>Custo: 100 de mana<br>Cooldown: 10 turnos<br>Duração: 3 turnos<br><br>Limitações: Não funciona contra entidades fora do plano material. Requer concentração.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Corpo Astral",
+    "element": "💠 Arcano",
+    "description": "<p>Descrição: O conjurador se projeta fora de seu corpo físico em forma espiritual, tornando-se intangível.<br><br>Efeito: Imunidade a dano físico e atravessa paredes. Pode lançar magias sem custo de mana.<br><br>Custo: 150 de mana<br>Cooldown: 15 turnos<br>Duração: 2 turnos<br><br>Limitações: O corpo físico permanece imóvel e vulnerável. Qualquer dano recebido no corpo anula a projeção.</p>",
+    "categories": [
+      "💠 Arcano",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Lâmina Congelante",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: O conjurador cria uma lâmina de gelo puro que pode ser arremessada ou empunhada. Ao atingir o alvo, estilhaça congelando o ponto de impacto.<br><br>Efeito: Dano leve. Ralenta o inimigo em 20% por 1 turno.<br><br>Custo: 10 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo<br><br>Limitações: Pode ser quebrada por fogo ou impacto antes de atingir o alvo.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Névoa Gélida",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Libera uma névoa fria e úmida que baixa a temperatura local, dificultando movimentos e visão.<br><br>Efeito: Reduz mobilidade e campo de visão de inimigos próximos.<br><br>Custo: 12 de mana<br>Cooldown: 3 turnos<br>Duração: 2 turnos<br><br>Limitações: Aliados também são afetados pela redução de visão. Ineficaz em áreas abertas com vento forte.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Básica",
+      "Debuff"
+    ]
+  },
+  {
+    "title": "Toque Congelante",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Ao tocar um inimigo, o conjurador canaliza gelo diretamente em sua carne, começando a paralisar os músculos.<br><br>Efeito: Dano leve + 10% de chance de paralisar por 1 turno.<br><br>Custo: 8 de mana<br>Cooldown: 2 turnos<br>Duração: Instantâneo<br><br>Limitações: Requer contato direto. Inútil contra inimigos sem corpo físico.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Estilhaço de Gelo",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Cria pequenos cristais afiados que são lançados em rápida sucessão.<br><br>Efeito: Causa dano perfurante leve e pode causar sangramento leve por 1 turno.<br><br>Custo: 14 de mana<br>Cooldown: 3 turnos<br>Duração: Instantâneo<br><br>Limitações: Pode ser refletido por barreiras mágicas ou metálicas.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Básica",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Prisão de Gelo",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Conjura blocos de gelo ao redor de um alvo, selando-o dentro de uma cúpula cristalina.<br><br>Efeito: Prende o inimigo por 1 turno, impedindo movimentos. Aplica dano moderado de gelo.<br><br>Custo: 35 de mana<br>Cooldown: 6 turnos<br>Duração: 1 turno<br><br>Limitações: Pode ser quebrada por magias de fogo ou ataques muito fortes de fora.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Intermediária",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Gelo Rasgante",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Cristais afiados crescem do chão em forma de lanças que emergem em direção ao alvo.<br><br>Efeito: Dano médio e 30% de chance de aplicar sangramento ou aleijar (redução de movimentação).<br><br>Custo: 40 de mana<br>Cooldown: 5 turnos<br>Duração: Instantâneo<br><br>Limitações: Só funciona em terrenos sólidos. Ineficaz em superfícies líquidas ou arenosas.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Intermediária",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Armadura Invernal",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Reveste o corpo do conjurador com placas de gelo reforçado, aumentando sua defesa.<br><br>Efeito: +40% de defesa física. Reduz dano de fogo em 20% (por absorção térmica).<br><br>Custo: 30 de mana<br>Cooldown: 8 turnos<br>Duração: 3 turnos<br><br>Limitações: Reduz mobilidade do usuário em 20%. Fraca contra magias de fogo muito intensas.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Intermediária",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Tempestade Glacial",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Convoca uma nevasca intensa que cobre o campo de batalha, congelando tudo em seu caminho.<br><br>Efeito: Dano contínuo em área, chance de congelar inimigos a cada turno. Reduz visão e mobilidade drasticamente.<br><br>Custo: 85 de mana<br>Cooldown: 10 turnos<br>Duração: 3 turnos<br><br>Limitações: Afeta aliados. Requer canalização de 1 turno. Inútil em ambientes quentes demais.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Sarcófago de Gelo Eterno",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: Encapsula um inimigo em um bloco de gelo quase impenetrável, selando-o temporariamente do combate.<br><br>Efeito: Remove o alvo do combate por 2 turnos. Causa dano moderado por congelamento interno.<br><br>Custo: 100 de mana<br>Cooldown: 12 turnos<br>Duração: 2 turnos<br><br>Limitações: Não afeta alvos muito grandes ou imunes a controle. O alvo é invulnerável enquanto selado.</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Avançada",
+      "Controle"
+    ]
+  },
+  {
+    "title": "Coração do Inverno",
+    "element": "❄️ Gelo",
+    "description": "<p>Descrição: O conjurador entra em comunhão com o frio absoluto, tornando-se um avatar do inverno.<br><br>Efeito: Ganha imunidade a dano físico e +50% em todas as magias de gelo. Magias básicas se tornam gratuitas durante a duração.<br><br>Custo: 120 de mana<br>Cooldown: 15 turnos<br>Duração: 3 turnos<br><br>Limitações: Ao fim da duração, o usuário fica exausto (-50% de mana e -30% de defesa por 2 turnos).</p>",
+    "categories": [
+      "❄️ Gelo",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Julgamento do Trovão",
+    "element": "⚡ Raio",
+    "description": "<p>Descrição: Invoca um gigantesco relâmpago celestial que desce com o peso de uma sentença divina, rasgando o céu e o campo de batalha.<br><br>Efeito: Grande dano elétrico em área. Aplica 'Queimadura de Plasma' (dano extra a cada turno por 2 turnos).<br><br>Custo: 95 de mana<br>Cooldown: 10 turnos<br>Duração: Instantâneo + 2 turnos de efeito residual<br><br>Limitações: Requer céu aberto. Inútil em áreas fechadas. Demora 1 turno para cair (pode ser evitado).</p>",
+    "categories": [
+      "⚡ Raio",
+      "Avançada",
+      "Ataque"
+    ]
+  },
+  {
+    "title": "Corpo de Raio",
+    "element": "⚡ Raio",
+    "description": "<p>Descrição: O corpo do conjurador se torna eletricidade pura, permitindo mover-se como uma descarga. Intocável e veloz.<br><br>Efeito: +70% de velocidade. Pode atravessar corpos e objetos físicos. Causa dano leve ao tocar inimigos.<br><br>Custo: 100 de mana<br>Cooldown: 12 turnos<br>Duração: 2 turnos<br><br>Limitações: Não pode usar magias nesse estado. Fica vulnerável ao fim da transformação.</p>",
+    "categories": [
+      "⚡ Raio",
+      "Avançada",
+      "Suporte"
+    ]
+  },
+  {
+    "title": "Colapso de Cargas",
+    "element": "⚡ Raio",
+    "description": "<p>Descrição: Sobrecarrega o campo magnético ao redor, causando uma implosão elétrica que paralisa tudo por um instante antes de explodir para fora.<br><br>Efeito: Paralisa inimigos por 1 turno e causa dano massivo em área.<br><br>Custo: 110 de mana<br>Cooldown: 14 turnos<br>Duração: 1 turno de paralisia + explosão imediata<br><br>Limitações: Requer canalização por 1 turno. O usuário também não pode se mover durante o efeito.</p>",
+    "categories": [
+      "⚡ Raio",
+      "Avançada",
+      "Controle"
+    ]
+  }
+]
