@@ -36,7 +36,8 @@ nomes_magias = [m["title"] for m in magias if "title" in m]
 # =============================
 # CONFIGURAÇÃO DO BOT
 # =============================
-intents = discord.Intents.default()
+intents = discord.Intents.all()
+
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # =============================
@@ -99,5 +100,6 @@ async def on_ready():
 # =============================
 if __name__ == "__main__":
     bot.run(TOKEN)
+
 
 
