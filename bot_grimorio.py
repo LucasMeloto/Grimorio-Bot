@@ -45,13 +45,27 @@ except Exception as e:
     print(f"Erro ao carregar o JSON: {e}")
 
 print(f"✅ Magias carregadas: {len(magias)}")
+print(f"Exemplo de magia: {magias[0].get('titulo', magias[0].get('Título', 'Sem título'))}")
 
 def buscar_magia(nome):
     nome_norm = normalize_text(nome)
+
     for magia in magias:
-        titulo = normalize_text(str(magia.get("titulo", "")))
-        if nome_norm in titulo:
+        # tenta obter título em várias formas possíveis
+        titulo = (
+            magia.get("titulo")
+            or magia.get("Título")
+            or magia.get("nome")
+            or magia.get("Nome")
+            or ""
+        )
+
+        titulo_norm = normalize_text(str(titulo))
+
+        if nome_norm in titulo_norm or titulo_norm in nome_norm:
             return magia
+
+    print(f"[DEBUG] Magia não encontrada: {nome}")
     return None
 
 # =====================================================
@@ -154,4 +168,5 @@ async def on_ready():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run(os.environ["DISCORD_TOKEN"])
+
 
