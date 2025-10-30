@@ -99,9 +99,12 @@ async def ajuda(ctx):
 # =====================================================
 @bot.event
 async def on_ready():
-    await bot.tree.sync()
-    print(f"✅ Bot do Grimório online como {bot.user}!")
-    print("Slash commands sincronizados com sucesso.")
+    try:
+        synced = await bot.tree.sync()
+        print(f"✅ Bot do Grimório online como {bot.user}!")
+        print(f"🔁 {len(synced)} comandos sincronizados com sucesso.")
+    except Exception as e:
+        print(f"⚠️ Erro ao sincronizar comandos: {e}")
 
 # =====================================================
 # 🌐 EXECUÇÃO
@@ -109,3 +112,4 @@ async def on_ready():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run(os.environ["DISCORD_TOKEN"])
+
