@@ -97,14 +97,20 @@ async def slash_magia(interaction: discord.Interaction, nome: str):
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
 
-    titulo = limpar_texto(magia.get("titulo", ""))
-    descricao = limpar_texto(magia.get("descricao", "Sem descrição."))
-    efeito = limpar_texto(magia.get("efeito", "Sem efeito."))
-    custo = limpar_texto(magia.get("custo", "N/A"))
-    cooldown = limpar_texto(magia.get("cooldown", "N/A"))
-    duracao = limpar_texto(magia.get("duracao", "N/A"))
-    limitacoes = limpar_texto(magia.get("limitações", "Nenhuma."))
-    elemento = limpar_texto(magia.get("elemento", "Desconhecido"))
+ def obter_valor(magia, *chaves, padrao=""):
+    for chave in chaves:
+        if chave in magia:
+            return limpar_texto(str(magia[chave]))
+    return padrao
+
+titulo = obter_valor(magia, "titulo", "Título", "nome", "Nome", padrao="Sem título")
+descricao = obter_valor(magia, "descricao", "Descrição", "descricao_magia", padrao="Sem descrição.")
+efeito = obter_valor(magia, "efeito", "Efeito", "efeitos", padrao="Sem efeito.")
+custo = obter_valor(magia, "custo", "Custo", padrao="N/A")
+cooldown = obter_valor(magia, "cooldown", "Cooldown", "Recarga", padrao="N/A")
+duracao = obter_valor(magia, "duracao", "Duração", padrao="N/A")
+limitacoes = obter_valor(magia, "limitações", "Limitações", "limite", padrao="Nenhuma.")
+elemento = obter_valor(magia, "elemento", "Elemento", padrao="Desconhecido")
 
     embed = discord.Embed(title=f"✨ {titulo}", color=discord.Color.purple())
     embed.add_field(name="📘 Elemento", value=elemento, inline=False)
@@ -133,14 +139,20 @@ async def comando_magia(ctx, *, nome: str):
         await ctx.send(f"❌ Magia **{nome}** não encontrada.")
         return
 
-    titulo = limpar_texto(magia.get("titulo", ""))
-    descricao = limpar_texto(magia.get("descricao", "Sem descrição."))
-    efeito = limpar_texto(magia.get("efeito", "Sem efeito."))
-    custo = limpar_texto(magia.get("custo", "N/A"))
-    cooldown = limpar_texto(magia.get("cooldown", "N/A"))
-    duracao = limpar_texto(magia.get("duracao", "N/A"))
-    limitacoes = limpar_texto(magia.get("limitações", "Nenhuma."))
-    elemento = limpar_texto(magia.get("elemento", "Desconhecido"))
+def obter_valor(magia, *chaves, padrao=""):
+    for chave in chaves:
+        if chave in magia:
+            return limpar_texto(str(magia[chave]))
+    return padrao
+
+titulo = obter_valor(magia, "titulo", "Título", "nome", "Nome", padrao="Sem título")
+descricao = obter_valor(magia, "descricao", "Descrição", "descricao_magia", padrao="Sem descrição.")
+efeito = obter_valor(magia, "efeito", "Efeito", "efeitos", padrao="Sem efeito.")
+custo = obter_valor(magia, "custo", "Custo", padrao="N/A")
+cooldown = obter_valor(magia, "cooldown", "Cooldown", "Recarga", padrao="N/A")
+duracao = obter_valor(magia, "duracao", "Duração", padrao="N/A")
+limitacoes = obter_valor(magia, "limitações", "Limitações", "limite", padrao="Nenhuma.")
+elemento = obter_valor(magia, "elemento", "Elemento", padrao="Desconhecido")
 
     msg = (
         f"**✨ {titulo}**\n"
@@ -168,5 +180,6 @@ async def on_ready():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run(os.environ["DISCORD_TOKEN"])
+
 
 
