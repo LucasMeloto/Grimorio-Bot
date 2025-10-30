@@ -44,6 +44,8 @@ try:
 except Exception as e:
     print(f"Erro ao carregar o JSON: {e}")
 
+print(f"✅ Magias carregadas: {len(magias)}")
+
 def buscar_magia(nome):
     nome_norm = normalize_text(nome)
     for magia in magias:
@@ -152,3 +154,4 @@ async def on_ready():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run(os.environ["DISCORD_TOKEN"])
+
