@@ -3,22 +3,25 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 import os
+import threading
 from flask import Flask
 
 # =========================
-# Configuração básica Flask (mantém o Render acordado)
+# Flask (mantém o Render ativo)
 # =========================
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Grimório ativo!"
+    return "Grimório ativo e desperto!"
 
-if __name__ == "__main__":
+def iniciar_flask():
     app.run(host="0.0.0.0", port=8080)
 
+threading.Thread(target=iniciar_flask).start()
+
 # =========================
-# Carregamento de magias
+# Carregar magias do JSON
 # =========================
 MAGIAS = []
 MAGIA_MAP = {}
@@ -28,16 +31,16 @@ try:
         MAGIAS = json.load(f)
         if isinstance(MAGIAS, dict) and "magias" in MAGIAS:
             MAGIAS = MAGIAS["magias"]
-        print(f"✅ JSON carregado com sucesso: {len(MAGIAS)} magias disponíveis.")
+        print(f"✅ JSON carregado: {len(MAGIAS)} magias disponíveis.")
         for m in MAGIAS:
             nome = m.get("nome", "").lower()
             if nome:
                 MAGIA_MAP[nome] = m
 except Exception as e:
-    print(f"❌ Erro ao carregar o arquivo grimorio_completo.json: {e}")
+    print(f"❌ Erro ao carregar grimorio_completo.json: {e}")
 
 # =========================
-# Configuração do bot
+# Configuração do Bot
 # =========================
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -47,19 +50,17 @@ async def on_ready():
     print(f"🪄 Grimório conectado como {bot.user}")
     try:
         synced = await bot.tree.sync()
-        print(f"📜 {len(synced)} comandos sincronizados com sucesso.")
+        print(f"📜 {len(synced)} comandos sincronizados.")
     except Exception as e:
         print(f"❌ Erro ao sincronizar comandos: {e}")
 
 # =========================
-# Funções auxiliares
+# Funções
 # =========================
 def buscar_magia(nome):
-    """Busca uma magia pelo nome (case insensitive)."""
     if not nome:
         return None
-    nome = nome.lower()
-    return MAGIA_MAP.get(nome)
+    return MAGIA_MAP.get(nome.lower())
 
 # =========================
 # Comando /magia
@@ -80,7 +81,6 @@ async def comando_magia(interaction: discord.Interaction, nome: str):
         title=f"✨ {magia.get('nome', 'Magia desconhecida')}",
         color=discord.Color.purple()
     )
-
     embed.add_field(name="🧬 Elemento", value=magia.get("elemento", "Desconhecido"), inline=False)
     embed.add_field(name="📜 Descrição", value=magia.get("descricao", "Sem descrição."), inline=False)
     embed.add_field(name="🎯 Efeito", value=magia.get("efeito", "Sem efeito."), inline=False)
@@ -92,12 +92,12 @@ async def comando_magia(interaction: discord.Interaction, nome: str):
     await interaction.response.send_message(embed=embed)
 
 # =========================
-# Execução do bot
+# Rodar bot
 # =========================
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 if not TOKEN:
     print("❌ ERRO: Nenhum token encontrado na variável DISCORD_TOKEN.")
 else:
-    print("🚀 Iniciando bot...")
+    print("🚀 Iniciando Grimório...")
     bot.run(TOKEN)
