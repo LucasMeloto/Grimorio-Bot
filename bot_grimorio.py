@@ -26,9 +26,16 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # === Carrega o JSON de magias ===
 def carregar_magias():
     caminho = "grimorio_completo.json"
+    print(f"Tentando carregar magias de: {os.path.abspath(caminho)}")
+
     if not os.path.exists(caminho):
-        print("Arquivo grimorio_completo.json não encontrado.")
+        print("❌ Arquivo grimorio_completo.json não encontrado no diretório!")
         return []
+
+    with open(caminho, "r", encoding="utf-8") as f:
+        dados = json.load(f)
+
+    print(f"✅ {len(dados)} registros brutos encontrados.")
 
     with open(caminho, "r", encoding="utf-8") as f:
         dados = json.load(f)
@@ -105,3 +112,4 @@ if not TOKEN:
     print("⚠️ Variável de ambiente DISCORD_TOKEN não encontrada!")
 else:
     bot.run(TOKEN)
+
