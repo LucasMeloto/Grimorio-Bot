@@ -2,184 +2,110 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import json
-import os
 from flask import Flask
 import threading
-import unicodedata
-import re
 
-# =====================================================
-# 🔹 Funções de Normalização
-# =====================================================
-
-def limpar_texto(texto: str) -> str:
-    """Remove <br> e normaliza o texto."""
-    if not isinstance(texto, str):
-        return ""
-    texto = texto.replace("<br>", "\n")
-    texto = re.sub(r"\s+", " ", texto).strip()
-    return texto
-
-def normalize_text(s):
-    """Remove acentos e coloca em minúsculas."""
-    if not isinstance(s, str):
-        s = str(s)
-    s = s.lower()
-    s = unicodedata.normalize("NFKD", s)
-    return "".join(ch for ch in s if not unicodedata.combining(ch))
-
-# =====================================================
-# 🔹 Carrega o JSON e normaliza
-# =====================================================
-magias = []
-try:
-    with open("grimorio_completo.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-        if isinstance(data, dict):
-            for lista in data.values():
-                if isinstance(lista, list):
-                    magias.extend(lista)
-        elif isinstance(data, list):
-            magias = data
-except Exception as e:
-    print(f"Erro ao carregar o JSON: {e}")
-
-print(f"✅ Magias carregadas: {len(magias)}")
-print(f"Exemplo de magia: {magias[0].get('titulo', magias[0].get('Título', 'Sem título'))}")
-
-def buscar_magia(nome):
-    nome_norm = normalize_text(nome)
-
-    for magia in magias:
-        # tenta obter título em várias formas possíveis
-        titulo = (
-            magia.get("titulo")
-            or magia.get("Título")
-            or magia.get("nome")
-            or magia.get("Nome")
-            or ""
-        )
-
-        titulo_norm = normalize_text(str(titulo))
-
-        if nome_norm in titulo_norm or titulo_norm in nome_norm:
-            return magia
-
-    print(f"[DEBUG] Magia não encontrada: {nome}")
-    return None
-
-# =====================================================
-# 🔹 Configuração do Bot
-# =====================================================
-intents = discord.Intents.all()
+# ===========================
+# Configuração básica do bot
+# ===========================
+intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
+TREE = bot.tree
 
-# =====================================================
-# 🌐 Flask (para manter vivo no Render)
-# =====================================================
-app = Flask(__name__)
+# ===========================
+# Leitura do Grimório
+# ===========================
+with open("grimorio_completo.json", "r", encoding="utf-8") as file:
+    MAGIAS = json.load(file)
 
-@app.route('/')
-def home():
-    return "Bot do Grimório está online! 🔮"
+# Mapeia nomes de magias (em minúsculas) para o conteúdo completo
+MAGIA_MAP = {m["nome"].lower(): m for elemento in MAGIAS for m in elemento["magias"]}
 
-def run_flask():
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+# ===========================
+# Funções auxiliares
+# ===========================
+def limpar_texto(texto):
+    """Remove tags <br> e espaços extras."""
+    return texto.replace("<br>", "").replace("\n\n", "\n").strip()
 
-# =====================================================
-# 🔮 Autocomplete de Magias
-# =====================================================
-@bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
-@app_commands.describe(nome="Digite o nome da magia")
-async def slash_magia(interaction: discord.Interaction, nome: str):
-    magia = buscar_magia(nome)
+def obter_valor(magia, chave, padrao="N/A"):
+    """Obtém valor da magia com segurança."""
+    return limpar_texto(magia.get(chave, padrao))
+
+# ===========================
+# Slash command: /magia
+# ===========================
+@TREE.command(name="magia", description="Consulta uma magia do Grimório.")
+@app_commands.describe(nome="Nome da magia que deseja consultar")
+@app_commands.autocomplete(nome=lambda interaction, current: [
+    app_commands.Choice(name=magia["nome"], value=magia["nome"])
+    for magia in MAGIA_MAP.values()
+    if current.lower() in magia["nome"].lower()
+][:25])
+async def magia(interaction: discord.Interaction, nome: str):
+    nome = nome.lower()
+    magia = MAGIA_MAP.get(nome)
+
     if not magia:
-        await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
+        embed = discord.Embed(
+            title="❌ Magia não encontrada",
+            description=f"Não encontrei nenhuma magia chamada **{nome.title()}**.",
+            color=discord.Color.red(),
+        )
+        await interaction.response.send_message(embed=embed, ephemeral=True)
         return
 
- def obter_valor(magia, *chaves, padrao=""):
-    for chave in chaves:
-        if chave in magia:
-            return limpar_texto(str(magia[chave]))
-    return padrao
+    elemento = magia.get("elemento", "Desconhecido").capitalize()
+    descricao = obter_valor(magia, "descricao", "Sem descrição.")
+    efeito = obter_valor(magia, "efeito", "Sem efeito.")
+    custo = obter_valor(magia, "custo", "N/A")
+    cooldown = obter_valor(magia, "cooldown", "N/A")
+    duracao = obter_valor(magia, "duracao", "N/A")
+    limitacoes = obter_valor(magia, "limitacoes", "Nenhuma.")
+    categoria = obter_valor(magia, "categoria", "Geral")
 
-titulo = obter_valor(magia, "titulo", "Título", "nome", "Nome", padrao="Sem título")
-descricao = obter_valor(magia, "descricao", "Descrição", "descricao_magia", padrao="Sem descrição.")
-efeito = obter_valor(magia, "efeito", "Efeito", "efeitos", padrao="Sem efeito.")
-custo = obter_valor(magia, "custo", "Custo", padrao="N/A")
-cooldown = obter_valor(magia, "cooldown", "Cooldown", "Recarga", padrao="N/A")
-duracao = obter_valor(magia, "duracao", "Duração", padrao="N/A")
-limitacoes = obter_valor(magia, "limitações", "Limitações", "limite", padrao="Nenhuma.")
-elemento = obter_valor(magia, "elemento", "Elemento", padrao="Desconhecido")
-
-    embed = discord.Embed(title=f"✨ {titulo}", color=discord.Color.purple())
-    embed.add_field(name="📘 Elemento", value=elemento, inline=False)
-    embed.add_field(name="📜 Descrição", value=descricao, inline=False)
-    embed.add_field(name="🎯 Efeito", value=efeito, inline=False)
-    embed.add_field(name="💧 Custo", value=custo, inline=True)
-    embed.add_field(name="⏳ Cooldown", value=cooldown, inline=True)
-    embed.add_field(name="🕓 Duração", value=duracao, inline=True)
-    embed.add_field(name="⚠️ Limitações", value=limitacoes, inline=False)
+    embed = discord.Embed(
+        title=f"✨ {magia['nome']}",
+        color=discord.Color.blue()
+    )
+    embed.add_field(name="**Elemento:**", value=elemento, inline=False)
+    embed.add_field(name="**Categoria:**", value=categoria, inline=False)
+    embed.add_field(name="**Descrição:**", value=descricao, inline=False)
+    embed.add_field(name="**Efeito:**", value=efeito, inline=False)
+    embed.add_field(name="**Custo:**", value=custo, inline=True)
+    embed.add_field(name="**Cooldown:**", value=cooldown, inline=True)
+    embed.add_field(name="**Duração:**", value=duracao, inline=True)
+    embed.add_field(name="**Limitações:**", value=limitacoes, inline=False)
+    embed.set_footer(text="📜 Grimório Yo Paris")
 
     await interaction.response.send_message(embed=embed)
 
-@slash_magia.autocomplete("nome")
-async def autocomplete_magia(interaction: discord.Interaction, current: str):
-    nomes = [m["titulo"] for m in magias if "titulo" in m]
-    sugestoes = [app_commands.Choice(name=n, value=n) for n in nomes if current.lower() in n.lower()]
-    return sugestoes[:25]
+# ===========================
+# Rota Flask (Render)
+# ===========================
+app = Flask("GrimorioBot")
 
-# =====================================================
-# 🔹 Comando texto (!magia)
-# =====================================================
-@bot.command(name="magia")
-async def comando_magia(ctx, *, nome: str):
-    magia = buscar_magia(nome)
-    if not magia:
-        await ctx.send(f"❌ Magia **{nome}** não encontrada.")
-        return
+@app.route("/")
+def home():
+    return "O Grimório está vivo!"
 
-def obter_valor(magia, *chaves, padrao=""):
-    for chave in chaves:
-        if chave in magia:
-            return limpar_texto(str(magia[chave]))
-    return padrao
+def run():
+    app.run(host="0.0.0.0", port=8080)
 
-titulo = obter_valor(magia, "titulo", "Título", "nome", "Nome", padrao="Sem título")
-descricao = obter_valor(magia, "descricao", "Descrição", "descricao_magia", padrao="Sem descrição.")
-efeito = obter_valor(magia, "efeito", "Efeito", "efeitos", padrao="Sem efeito.")
-custo = obter_valor(magia, "custo", "Custo", padrao="N/A")
-cooldown = obter_valor(magia, "cooldown", "Cooldown", "Recarga", padrao="N/A")
-duracao = obter_valor(magia, "duracao", "Duração", padrao="N/A")
-limitacoes = obter_valor(magia, "limitações", "Limitações", "limite", padrao="Nenhuma.")
-elemento = obter_valor(magia, "elemento", "Elemento", padrao="Desconhecido")
+def keep_alive():
+    t = threading.Thread(target=run)
+    t.start()
 
-    msg = (
-        f"**✨ {titulo}**\n"
-        f"**Elemento:** {elemento}\n\n"
-        f"**Descrição:** {descricao}\n\n"
-        f"**Efeito:** {efeito}\n\n"
-        f"**Custo:** {custo}\n"
-        f"**Cooldown:** {cooldown}\n"
-        f"**Duração:** {duracao}\n"
-        f"**Limitações:** {limitacoes}"
-    )
-    await ctx.send(msg)
-
-# =====================================================
-# 🔹 Evento on_ready
-# =====================================================
+# ===========================
+# Inicialização
+# ===========================
 @bot.event
 async def on_ready():
-    await bot.tree.sync()
-    print(f"✅ Bot online como {bot.user} com {len(magias)} magias carregadas!")
+    print(f"✅ Bot conectado como {bot.user}")
+    await TREE.sync()
+    print("🌐 Comandos sincronizados com sucesso.")
 
-# =====================================================
-# 🚀 Executa o Bot
-# =====================================================
-if __name__ == "__main__":
-    threading.Thread(target=run_flask).start()
-    bot.run(os.environ["DISCORD_TOKEN"])
+keep_alive()
 
-
-
+# 🔑 Substitua pelo seu token do Discord
+bot.run("SEU_TOKEN_AQUI")
