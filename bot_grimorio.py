@@ -1,115 +1,103 @@
+import json
 import discord
 from discord import app_commands
 from discord.ext import commands
-import json
 import os
 from flask import Flask
-from threading import Thread
 
-# === Mantém o bot online no Render ===
+# =========================
+# Configuração básica Flask (mantém o Render acordado)
+# =========================
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
-    return "Bot Grimório ativo!"
+    return "Grimório ativo!"
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
 
-Thread(target=run).start()
+# =========================
+# Carregamento de magias
+# =========================
+MAGIAS = []
+MAGIA_MAP = {}
 
-# === Configuração dos intents ===
+try:
+    with open("grimorio_completo.json", "r", encoding="utf-8") as f:
+        MAGIAS = json.load(f)
+        if isinstance(MAGIAS, dict) and "magias" in MAGIAS:
+            MAGIAS = MAGIAS["magias"]
+        print(f"✅ JSON carregado com sucesso: {len(MAGIAS)} magias disponíveis.")
+        for m in MAGIAS:
+            nome = m.get("nome", "").lower()
+            if nome:
+                MAGIA_MAP[nome] = m
+except Exception as e:
+    print(f"❌ Erro ao carregar o arquivo grimorio_completo.json: {e}")
+
+# =========================
+# Configuração do bot
+# =========================
 intents = discord.Intents.default()
-intents.message_content = False  # Slash commands não precisam disso
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# === Carrega o JSON de magias ===
-def carregar_magias():
-    caminho = "grimorio_completo.json"
-    print(f"Tentando carregar magias de: {os.path.abspath(caminho)}")
+@bot.event
+async def on_ready():
+    print(f"🪄 Grimório conectado como {bot.user}")
+    try:
+        synced = await bot.tree.sync()
+        print(f"📜 {len(synced)} comandos sincronizados com sucesso.")
+    except Exception as e:
+        print(f"❌ Erro ao sincronizar comandos: {e}")
 
-    if not os.path.exists(caminho):
-        print("❌ Arquivo grimorio_completo.json não encontrado no diretório!")
-        return []
-
-    with open(caminho, "r", encoding="utf-8") as f:
-        dados = json.load(f)
-
-    print(f"✅ {len(dados)} registros brutos encontrados.")
-
-    with open(caminho, "r", encoding="utf-8") as f:
-        dados = json.load(f)
-
-    magias = []
-    # Pode vir como lista simples ou agrupada por elemento
-    for item in dados:
-        if "magias" in item:  # Estrutura agrupada
-            for m in item["magias"]:
-                magias.append(m)
-        elif "nome" in item:  # Estrutura simples
-            magias.append(item)
-    return magias
-
-MAGIAS = carregar_magias()
-MAGIA_MAP = {m.get("nome", "").lower(): m for m in MAGIAS}
-
-# === Função para buscar magia ===
+# =========================
+# Funções auxiliares
+# =========================
 def buscar_magia(nome):
-    return MAGIA_MAP.get(nome.lower())
+    """Busca uma magia pelo nome (case insensitive)."""
+    if not nome:
+        return None
+    nome = nome.lower()
+    return MAGIA_MAP.get(nome)
 
-# === Comando principal ===
-@bot.tree.command(name="magia", description="Mostra detalhes de uma magia do grimório.")
-@app_commands.describe(nome="Nome da magia que deseja consultar")
-@app_commands.autocomplete(nome=lambda i, c: autocomplete_magias(i, c))
+# =========================
+# Comando /magia
+# =========================
+@bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
+@app_commands.describe(nome="Nome da magia que deseja consultar.")
+@app_commands.autocomplete(nome=lambda interaction, current: [
+    app_commands.Choice(name=m["nome"], value=m["nome"])
+    for m in MAGIAS if current.lower() in m["nome"].lower()
+][:25])
 async def comando_magia(interaction: discord.Interaction, nome: str):
     magia = buscar_magia(nome)
     if not magia:
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
 
-    def limpar(texto):
-        return str(texto).replace("<br>", "").strip() if texto else "N/A"
-
     embed = discord.Embed(
-        title=f"✨ {magia.get('nome', 'Sem nome')}",
+        title=f"✨ {magia.get('nome', 'Magia desconhecida')}",
         color=discord.Color.purple()
     )
-    embed.set_author(name="Grimorio", icon_url="https://i.imgur.com/G2Y8XKX.png")
 
-    embed.add_field(name="📘 Elemento", value=limpar(magia.get("elemento", "Desconhecido")), inline=False)
-    embed.add_field(name="🧾 Descrição", value=limpar(magia.get("descricao", "Sem descrição.")), inline=False)
-    embed.add_field(name="🎯 Efeito", value=limpar(magia.get("efeito", "Sem efeito.")), inline=False)
-    embed.add_field(name="💧 Custo", value=limpar(magia.get("custo", "N/A")), inline=True)
-    embed.add_field(name="⏳ Cooldown", value=limpar(magia.get("cooldown", "N/A")), inline=True)
-    embed.add_field(name="🕓 Duração", value=limpar(magia.get("duracao", "N/A")), inline=True)
-    embed.add_field(name="⚠️ Limitações", value=limpar(magia.get("limitacoes", "Nenhuma.")), inline=False)
+    embed.add_field(name="🧬 Elemento", value=magia.get("elemento", "Desconhecido"), inline=False)
+    embed.add_field(name="📜 Descrição", value=magia.get("descricao", "Sem descrição."), inline=False)
+    embed.add_field(name="🎯 Efeito", value=magia.get("efeito", "Sem efeito."), inline=False)
+    embed.add_field(name="💧 Custo", value=magia.get("custo", "N/A"), inline=True)
+    embed.add_field(name="⏳ Cooldown", value=magia.get("cooldown", "N/A"), inline=True)
+    embed.add_field(name="🕓 Duração", value=magia.get("duracao", "N/A"), inline=True)
+    embed.add_field(name="⚠️ Limitações", value=magia.get("limitacoes", "Nenhuma."), inline=False)
 
     await interaction.response.send_message(embed=embed)
 
-# === Autocomplete com segurança ===
-async def autocomplete_magias(interaction: discord.Interaction, current: str):
-    try:
-        nomes = [m.get("nome", "") for m in MAGIAS if m.get("nome")]
-        filtradas = [n for n in nomes if current.lower() in n.lower()]
-        return [app_commands.Choice(name=n, value=n) for n in filtradas[:25]]
-    except Exception as e:
-        print("Erro no autocomplete:", e)
-        return []
-
-# === Inicialização ===
-@bot.event
-async def on_ready():
-    print(f"🤖 Bot conectado como {bot.user}")
-    try:
-        await bot.tree.sync()
-        print("🌙 Comandos sincronizados com sucesso.")
-    except Exception as e:
-        print("Erro ao sincronizar comandos:", e)
-
-# === Executa o bot ===
+# =========================
+# Execução do bot
+# =========================
 TOKEN = os.getenv("DISCORD_TOKEN")
-if not TOKEN:
-    print("⚠️ Variável de ambiente DISCORD_TOKEN não encontrada!")
-else:
-    bot.run(TOKEN)
 
+if not TOKEN:
+    print("❌ ERRO: Nenhum token encontrado na variável DISCORD_TOKEN.")
+else:
+    print("🚀 Iniciando bot...")
+    bot.run(TOKEN)
