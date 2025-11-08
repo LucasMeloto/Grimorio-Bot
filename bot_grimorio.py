@@ -79,27 +79,39 @@ async def autocomplete_magia(interaction: discord.Interaction, current: str):
 # Comando /magia
 # =========================
 @bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
-@app_commands.describe(nome="Nome da magia que deseja consultar.")
-@app_commands.autocomplete(nome=autocomplete_magia)
-async def comando_magia(interaction: discord.Interaction, nome: str):
-    magia = buscar_magia(nome)
-    if not magia:
+@app_commands.describe(nome="Nome da magia que deseja consultar")
+@app_commands.autocomplete(nome=lambda inter, cur: buscar_sugestoes(cur))
+async def slash_magia(interaction: discord.Interaction, nome: str):
+    magia = MAGIA_MAP.get(nome.lower())
+    if magia is None:
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
 
     embed = discord.Embed(
-        title=f"✨ {magia.get('nome', 'Magia desconhecida')}",
-        color=discord.Color.purple()
+        title=f"✨ {magia.get('nome', 'Sem nome')}",
+        color=discord.Color.orange()
     )
-    embed.add_field(name="🧬 Elemento", value=magia.get("elemento", "Desconhecido"), inline=False)
-    embed.add_field(name="📜 Descrição", value=magia.get("descricao", "Sem descrição."), inline=False)
-    embed.add_field(name="🎯 Efeito", value=magia.get("efeito", "Sem efeito."), inline=False)
-    embed.add_field(name="💧 Custo", value=magia.get("custo", "N/A"), inline=True)
-    embed.add_field(name="⏳ Cooldown", value=magia.get("cooldown", "N/A"), inline=True)
-    embed.add_field(name="🕓 Duração", value=magia.get("duracao", "N/A"), inline=True)
-    embed.add_field(name="⚠️ Limitações", value=magia.get("limitacoes", "Nenhuma."), inline=False)
-
+    embed.add_field(name="**Elemento:**", value=magia.get("elemento", "Desconhecido"), inline=False)
+    embed.add_field(name="**Descrição:**", value=magia.get("descricao", "Sem descrição."), inline=False)
+    embed.add_field(name="**Efeito:**", value=magia.get("efeito", "Sem efeito."), inline=False)
+    embed.add_field(name="**Custo:**", value=magia.get("custo", "N/A"), inline=True)
+    embed.add_field(name="**Cooldown:**", value=magia.get("cooldown", "N/A"), inline=True)
+    embed.add_field(name="**Duração:**", value=magia.get("duracao", "N/A"), inline=True)
+    embed.add_field(name="**Limitações:**", value=magia.get("limitacoes", "Nenhuma."), inline=False)
     await interaction.response.send_message(embed=embed)
+
+
+async def buscar_sugestoes(current: str):
+    """Autocomplete — retorna até 25 magias cujo nome começa com o texto digitado"""
+    current = current.lower()
+    sugestoes = []
+    for nome in MAGIA_MAP.keys():
+        if current in nome:
+            # Limita para no máximo 100 caracteres, como exige o Discord
+            sugestoes.append(app_commands.Choice(name=nome[:100], value=nome))
+        if len(sugestoes) >= 25:  # limite do Discord
+            break
+    return sugestoes
 
 # =========================
 # Rodar bot
@@ -111,3 +123,4 @@ if not TOKEN:
 else:
     print("🚀 Iniciando Grimório...")
     bot.run(TOKEN)
+
