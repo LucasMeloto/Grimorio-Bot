@@ -21,19 +21,39 @@ def keep_alive():
     threading.Thread(target=lambda: app.run(host="0.0.0.0", port=8080)).start()
 
 # ========== CARREGAR MAGIAS ==========
-CAMINHO_JSON = "grimorio_completo.json"
 
-if not os.path.exists(CAMINHO_JSON):
-    print("❌ Arquivo de magias não encontrado!")
-    MAGIAS = []
-else:
-    with open(CAMINHO_JSON, "r", encoding="utf-8") as f:
-        MAGIAS = json.load(f)
-    print(f"✅ JSON carregado: {len(MAGIAS)} magias disponíveis.")
+# Caminho do arquivo JSON
+JSON_PATH = os.path.join(os.path.dirname(__file__), "grimorio_completo.json")
 
-# Cria mapa rápido de magias
-MAGIA_MAP = {m.get("nome", "").lower(): m for m in MAGIAS if "nome" in m}
+# Carrega o JSON e adapta as chaves automaticamente
+with open(JSON_PATH, "r", encoding="utf-8") as f:
+    MAGIAS = json.load(f)
 
+# Normaliza para um formato único (independente dos nomes de chave)
+MAGIA_MAP = {}
+
+for m in MAGIAS:
+    nome = (
+        m.get("nome")
+        or m.get("title")  # <-- seu JSON usa "title"
+        or "Desconhecido"
+    ).strip().lower()
+
+    magia_data = {
+        "nome": m.get("nome") or m.get("title") or "Desconhecido",
+        "descricao": m.get("descricao") or m.get("description") or "Sem descrição.",
+        "elemento": m.get("elemento") or m.get("element") or "Desconhecido",
+        "efeito": m.get("efeito") or "Sem efeito.",
+        "custo": m.get("custo") or "N/A",
+        "cooldown": m.get("cooldown") or "N/A",
+        "duracao": m.get("duracao") or "N/A",
+        "limitacoes": m.get("limitacoes") or "Nenhuma.",
+        "categorias": m.get("categorias") or m.get("categories") or [],
+    }
+
+    MAGIA_MAP[nome] = magia_data
+
+print(f"✅ JSON carregado: {len(MAGIA_MAP)} magias disponíveis.")
 # ========== AUTOCOMPLETE ==========
 async def buscar_sugestoes(interaction: discord.Interaction, current: str):
     """Retorna até 25 magias que contenham o texto digitado."""
@@ -87,3 +107,4 @@ async def on_ready():
 keep_alive()
 TOKEN = os.getenv("DISCORD_TOKEN")
 bot.run(TOKEN)
+
