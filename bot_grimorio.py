@@ -80,7 +80,6 @@ def normalizar_magia(raw):
     efeito = raw.get("efeito")
     limitacoes = raw.get("limitacoes")
 
-    # tentar extrair do texto
     if not custo:
         custo, descricao = extrair_valor_por_label(descricao, ["Custo", "Cost"])
     if not cooldown:
@@ -134,14 +133,22 @@ except Exception as e:
     MAGIA_MAP = {}
 
 # ------------------------------------------------------------
+# AUTOCOMPLETE
+# ------------------------------------------------------------
+@app_commands.autocomplete(nome=None)
+async def autocomplete_magia(interaction: discord.Interaction, current: str):
+    results = [
+        app_commands.Choice(name=m["nome"], value=m["nome"])
+        for m in MAGIAS if current.lower() in m["nome"].lower()
+    ][:20]
+    return results
+
+# ------------------------------------------------------------
 # COMANDO /MAGIA
 # ------------------------------------------------------------
 @bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
 @app_commands.describe(nome="Nome da magia a ser consultada.")
-@app_commands.autocomplete(nome=lambda interaction, current: [
-    app_commands.Choice(name=m["nome"], value=m["nome"])
-    for m in MAGIAS if current.lower() in m["nome"].lower()
-][:20])
+@app_commands.autocomplete(nome=autocomplete_magia)
 async def comando_magia(interaction: discord.Interaction, nome: str):
     magia = MAGIA_MAP.get(nome.lower())
     if not magia:
