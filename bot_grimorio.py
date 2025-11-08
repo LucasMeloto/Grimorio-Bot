@@ -55,7 +55,7 @@ async def on_ready():
         print(f"❌ Erro ao sincronizar comandos: {e}")
 
 # =========================
-# Funções
+# Funções auxiliares
 # =========================
 def buscar_magia(nome):
     if not nome:
@@ -63,14 +63,24 @@ def buscar_magia(nome):
     return MAGIA_MAP.get(nome.lower())
 
 # =========================
+# Autocomplete da barra /
+# =========================
+async def autocomplete_magia(interaction: discord.Interaction, current: str):
+    choices = []
+    for magia in MAGIAS:
+        nome = magia.get("nome", "")
+        if current.lower() in nome.lower():
+            choices.append(app_commands.Choice(name=nome, value=nome))
+        if len(choices) >= 25:
+            break
+    return choices
+
+# =========================
 # Comando /magia
 # =========================
 @bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
 @app_commands.describe(nome="Nome da magia que deseja consultar.")
-@app_commands.autocomplete(nome=lambda interaction, current: [
-    app_commands.Choice(name=m["nome"], value=m["nome"])
-    for m in MAGIAS if current.lower() in m["nome"].lower()
-][:25])
+@app_commands.autocomplete(nome=autocomplete_magia)
 async def comando_magia(interaction: discord.Interaction, nome: str):
     magia = buscar_magia(nome)
     if not magia:
