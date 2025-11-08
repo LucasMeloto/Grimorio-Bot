@@ -1,110 +1,170 @@
 import discord
-from discord import app_commands
 from discord.ext import commands
+from discord import app_commands
 import json
-import os
+import re
 from flask import Flask
+import threading
 
-# ========== CONFIGURAÇÃO ==========
+# ------------------------------------------------------------
+# CONFIGURAÇÃO DO BOT
+# ------------------------------------------------------------
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
+TOKEN = "SEU_TOKEN_AQUI"  # 🔥 substitua pelo token real do bot
 
-# ========== FLASK KEEP-ALIVE ==========
+# ------------------------------------------------------------
+# FLASK (para manter o Render ativo)
+# ------------------------------------------------------------
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
-    return "✅ Bot Grimório ativo."
+    return "✅ Grimório ativo!"
 
-def keep_alive():
-    import threading
-    threading.Thread(target=lambda: app.run(host="0.0.0.0", port=8080)).start()
+def run_flask():
+    app.run(host="0.0.0.0", port=8080)
 
-# ========== CARREGAR MAGIAS ==========
+# ------------------------------------------------------------
+# FUNÇÕES DE TRATAMENTO DE TEXTO
+# ------------------------------------------------------------
+def limpar_html(texto: str) -> str:
+    if not texto:
+        return ""
+    texto = str(texto)
+    texto = re.sub(r'<\s*br\s*/?\s*>', '\n', texto, flags=re.IGNORECASE)
+    texto = re.sub(r'<[^>]+>', '', texto)
+    texto = re.sub(r'\r\n|\r', '\n', texto)
+    texto = re.sub(r'\n{2,}', '\n\n', texto)
+    return texto.strip()
 
-# Caminho do arquivo JSON
-JSON_PATH = os.path.join(os.path.dirname(__file__), "grimorio_completo.json")
+def limitar_texto(txt, limite=1024):
+    if not txt:
+        return "—"
+    txt = str(txt).strip()
+    return txt if len(txt) <= limite else txt[:limite - 3] + "..."
 
-# Carrega o JSON e adapta as chaves automaticamente
-with open(JSON_PATH, "r", encoding="utf-8") as f:
-    MAGIAS = json.load(f)
+def extrair_valor_por_label(desc: str, labels):
+    if not desc:
+        return None, desc
+    for label in labels:
+        m = re.search(rf'(?im)^\s*{re.escape(label)}\s*:\s*(.+?)\s*(?:\n|$)', desc)
+        if m:
+            val = m.group(1).strip()
+            desc = re.sub(rf'(?im)^\s*{re.escape(label)}\s*:\s*.+?(?:\n|$)', '', desc, count=1)
+            return val, desc.strip()
+    return None, desc
 
-# Normaliza para um formato único (independente dos nomes de chave)
-MAGIA_MAP = {}
+def extrair_efeito_lim(desc: str):
+    efeito, limitacoes = None, None
+    m = re.search(r'(?im)Efeito\s*:\s*(.+?)(?:\n|$)', desc)
+    if m:
+        efeito = m.group(1).strip()
+        desc = re.sub(r'(?im)Efeito\s*:\s*.+?(?:\n|$)', '', desc)
+    m2 = re.search(r'(?im)Limitaç(?:ões|oes)\s*:\s*(.+?)(?:\n|$)', desc)
+    if m2:
+        limitacoes = m2.group(1).strip()
+        desc = re.sub(r'(?im)Limitaç(?:ões|oes)\s*:\s*.+?(?:\n|$)', '', desc)
+    return efeito, limitacoes, desc.strip()
 
-for m in MAGIAS:
-    nome = (
-        m.get("nome")
-        or m.get("title")  # <-- seu JSON usa "title"
-        or "Desconhecido"
-    ).strip().lower()
+def normalizar_magia(raw):
+    nome = raw.get("nome") or raw.get("title") or "Sem nome"
+    descricao_raw = raw.get("descricao") or raw.get("description") or "Sem descrição."
+    elemento = raw.get("elemento") or raw.get("element") or "Desconhecido"
+    categorias = raw.get("categorias") or raw.get("categories") or []
 
-    magia_data = {
-        "nome": m.get("nome") or m.get("title") or "Desconhecido",
-        "descricao": m.get("descricao") or m.get("description") or "Sem descrição.",
-        "elemento": m.get("elemento") or m.get("element") or "Desconhecido",
-        "efeito": m.get("efeito") or "Sem efeito.",
-        "custo": m.get("custo") or "N/A",
-        "cooldown": m.get("cooldown") or "N/A",
-        "duracao": m.get("duracao") or "N/A",
-        "limitacoes": m.get("limitacoes") or "Nenhuma.",
-        "categorias": m.get("categorias") or m.get("categories") or [],
+    descricao = limpar_html(descricao_raw)
+    custo = raw.get("custo")
+    cooldown = raw.get("cooldown")
+    duracao = raw.get("duracao")
+    efeito = raw.get("efeito")
+    limitacoes = raw.get("limitacoes")
+
+    # tentar extrair do texto
+    if not custo:
+        custo, descricao = extrair_valor_por_label(descricao, ["Custo", "Cost"])
+    if not cooldown:
+        cooldown, descricao = extrair_valor_por_label(descricao, ["Cooldown", "Recarga"])
+    if not duracao:
+        duracao, descricao = extrair_valor_por_label(descricao, ["Duração", "Duration"])
+    if not efeito or not limitacoes:
+        e, l, descricao = extrair_efeito_lim(descricao)
+        efeito = efeito or e
+        limitacoes = limitacoes or l
+
+    descricao = re.sub(r'(?im)^Descrição\s*:\s*', '', descricao).strip()
+
+    return {
+        "nome": nome.strip(),
+        "descricao": descricao or "Sem descrição.",
+        "elemento": elemento,
+        "efeito": efeito or "Sem efeito.",
+        "custo": custo or "N/A",
+        "cooldown": cooldown or "N/A",
+        "duracao": duracao or "N/A",
+        "limitacoes": limitacoes or "Nenhuma.",
+        "categorias": categorias
     }
 
-    MAGIA_MAP[nome] = magia_data
+def build_embed_from_magia(m):
+    embed = discord.Embed(title=f"✨ {m['nome']}", color=discord.Color.orange())
+    embed.add_field(name="📘 Elemento", value=m["elemento"], inline=False)
+    embed.add_field(name="📜 Descrição", value=limitar_texto(m["descricao"]), inline=False)
+    embed.add_field(name="🎯 Efeito", value=limitar_texto(m["efeito"]), inline=False)
+    embed.add_field(name="💧 Custo", value=m["custo"], inline=True)
+    embed.add_field(name="⏳ Cooldown", value=m["cooldown"], inline=True)
+    embed.add_field(name="🕓 Duração", value=m["duracao"], inline=True)
+    embed.add_field(name="⚠️ Limitações", value=limitar_texto(m["limitacoes"]), inline=False)
+    categorias = ", ".join(m["categorias"]) if m["categorias"] else "—"
+    embed.set_footer(text=f"Categorias: {categorias}")
+    return embed
 
-print(f"✅ JSON carregado: {len(MAGIA_MAP)} magias disponíveis.")
-# ========== AUTOCOMPLETE ==========
-async def buscar_sugestoes(interaction: discord.Interaction, current: str):
-    """Retorna até 25 magias que contenham o texto digitado."""
-    current = current.lower()
-    sugestoes = []
-    for nome in MAGIA_MAP.keys():
-        if current in nome:
-            sugestoes.append(app_commands.Choice(name=nome[:100], value=nome))
-        if len(sugestoes) >= 25:
-            break
-    if not sugestoes:
-        sugestoes.append(app_commands.Choice(name="Nenhuma magia encontrada", value=""))
-    print(f"[🔍 Autocomplete] {len(sugestoes)} sugestões geradas para '{current}'.")
-    return sugestoes
+# ------------------------------------------------------------
+# CARREGAR O JSON
+# ------------------------------------------------------------
+try:
+    with open("grimorio_completo.json", "r", encoding="utf-8") as f:
+        raw_list = json.load(f)
+    MAGIAS = [normalizar_magia(r) for r in raw_list]
+    MAGIA_MAP = {m["nome"].lower(): m for m in MAGIAS}
+    print(f"✅ JSON carregado: {len(MAGIAS)} magias disponíveis.")
+except Exception as e:
+    print(f"❌ Erro ao carregar JSON: {e}")
+    MAGIAS = []
+    MAGIA_MAP = {}
 
-# ========== COMANDO /MAGIA ==========
+# ------------------------------------------------------------
+# COMANDO /MAGIA
+# ------------------------------------------------------------
 @bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
-@app_commands.describe(nome="Nome da magia que deseja consultar")
-@app_commands.autocomplete(nome=buscar_sugestoes)
+@app_commands.describe(nome="Nome da magia a ser consultada.")
+@app_commands.autocomplete(nome=lambda interaction, current: [
+    app_commands.Choice(name=m["nome"], value=m["nome"])
+    for m in MAGIAS if current.lower() in m["nome"].lower()
+][:20])
 async def comando_magia(interaction: discord.Interaction, nome: str):
-    nome = nome.lower().strip()
-    magia = MAGIA_MAP.get(nome)
-
+    magia = MAGIA_MAP.get(nome.lower())
     if not magia:
-        print(f"❌ Magia '{nome}' não encontrada.")
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
-
-    embed = discord.Embed(
-        title=f"✨ {magia.get('nome', 'Sem nome')}",
-        color=discord.Color.orange()
-    )
-    embed.add_field(name="**Elemento:**", value=magia.get("elemento", "Desconhecido"), inline=False)
-    embed.add_field(name="**Descrição:**", value=magia.get("descricao", "Sem descrição."), inline=False)
-    embed.add_field(name="**Efeito:**", value=magia.get("efeito", "Sem efeito."), inline=False)
-    embed.add_field(name="**Custo:**", value=magia.get("custo", "N/A"), inline=True)
-    embed.add_field(name="**Cooldown:**", value=magia.get("cooldown", "N/A"), inline=True)
-    embed.add_field(name="**Duração:**", value=magia.get("duracao", "N/A"), inline=True)
-    embed.add_field(name="**Limitações:**", value=magia.get("limitacoes", "Nenhuma."), inline=False)
-    
+    embed = build_embed_from_magia(magia)
     await interaction.response.send_message(embed=embed)
-    print(f"✅ Magia '{magia.get('nome')}' enviada para {interaction.user.name}.")
 
-# ========== EVENTOS ==========
+# ------------------------------------------------------------
+# EVENTOS DO BOT
+# ------------------------------------------------------------
 @bot.event
 async def on_ready():
-    await bot.tree.sync()
-    print(f"🚀 Iniciando Grimório... Logado como {bot.user}")
+    print(f"🚀 Iniciando Grimório como {bot.user}")
+    try:
+        synced = await bot.tree.sync()
+        print(f"📜 Comandos sincronizados: {len(synced)} disponíveis.")
+    except Exception as e:
+        print(f"Erro ao sincronizar comandos: {e}")
 
-# ========== EXECUÇÃO ==========
-keep_alive()
-TOKEN = os.getenv("DISCORD_TOKEN")
-bot.run(TOKEN)
-
+# ------------------------------------------------------------
+# INICIAR
+# ------------------------------------------------------------
+if __name__ == "__main__":
+    threading.Thread(target=run_flask).start()
+    bot.run(TOKEN)
