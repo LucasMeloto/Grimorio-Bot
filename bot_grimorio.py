@@ -122,19 +122,30 @@ async def on_ready():
 
 # ========= EXECUTAR O BOT =========
 if __name__ == "__main__":
+    import threading
+    import asyncio
+    import os
+
     TOKEN = os.getenv("DISCORD_TOKEN")
+
     if not TOKEN:
         print("❌ ERRO: Token do bot não encontrado. Verifique a variável DISCORD_TOKEN no Render.")
     else:
-        async def start_bot():
+        def run_flask():
+            from waitress import serve
+            serve(app, host="0.0.0.0", port=8080)
+
+        # inicia o flask em thread separada (não bloqueia o bot)
+        flask_thread = threading.Thread(target=run_flask, daemon=True)
+        flask_thread.start()
+
+        async def main():
             async with bot:
                 await bot.start(TOKEN)
 
-        import threading
-        threading.Thread(target=lambda: app.run(host="0.0.0.0", port=8080), daemon=True).start()
+        asyncio.run(main())
 
-        import asyncio
-        asyncio.run(start_bot())
+
 
 
 
