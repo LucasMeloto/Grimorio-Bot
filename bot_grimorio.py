@@ -1,172 +1,157 @@
-import os
-import json
 import discord
 from discord import app_commands
 from discord.ext import commands
 from flask import Flask
+from waitress import serve
+import json
+import os
 import asyncio
+import threading
 
-# ========= CONFIGURAÇÃO DO FLASK =========
+# ============================================================
+# CONFIGURAÇÃO BÁSICA
+# ============================================================
+
+# Token do Discord (definido no Render como variável de ambiente: DISCORD_TOKEN)
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+# Arquivo JSON com as magias
+ARQUIVO_MAGIAS = "magias.json"
+
+# Inicializa o Flask (mantém o Render ativo)
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
-    return "Grimório ativo!"
+    return "✅ Grimório do Discord está online."
 
-@app.route('/ping')
+@app.route("/ping")
 def ping():
     return "pong"
 
-# ========= CONFIGURAÇÃO DO DISCORD =========
+# ============================================================
+# CARREGAR MAGIAS
+# ============================================================
+
+try:
+    with open(ARQUIVO_MAGIAS, "r", encoding="utf-8") as f:
+        magias = json.load(f)
+    print(f"✅ JSON carregado: {len(magias)} magias disponíveis.")
+except Exception as e:
+    print(f"❌ Erro ao carregar JSON: {e}")
+    magias = []
+
+# ============================================================
+# CONFIGURAÇÃO DO BOT
+# ============================================================
+
 intents = discord.Intents.default()
-intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
+bot.remove_command("help")
 
-# ========= CARREGAR O JSON =========
-with open("grimorio_completo.json", "r", encoding="utf-8") as f:
-    MAGIAS = json.load(f)
-
-print(f"✅ JSON carregado: {len(MAGIAS)} magias disponíveis.")
-
-# ========= MAPEAR ELEMENTOS PARA EMOJIS =========
+# Mapeamento de emojis dos elementos
 ELEMENTOS_EMOJIS = {
-    "fire": "🔥",
-    "water": "💧",
-    "earth": "🌱",
-    "air": "🌪️",
-    "light": "☀️",
-    "dark": "💀",
-    "ice": "❄️",
-    "lightning": "⚡",
-    "arcane": "🔮",
-    "dimensional": "🌌",
-    "time": "⏳",
-    "status": "✨"
+    "Fogo": "🔥",
+    "Água": "💧",
+    "Terra": "🌱",
+    "Ar": "💨",
+    "Raio": "⚡",
+    "Gelo": "❄️",
+    "Luz": "✨",
+    "Escuridão": "🌑",
+    "Tempo": "⏳",
+    "Dimensional": "🌌",
+    "Status": "💠",
+    "Arcano": "🔮",
+    "Sem Elemento": "⚙️"
 }
 
-# ========= FUNÇÃO PARA LIMITAR TEXTO =========
-def limitar_texto(texto, limite=1024):
-    if not texto:
-        return "N/A"
-    return texto if len(texto) <= limite else texto[:limite - 3] + "..."
+# ============================================================
+# FUNÇÃO DE BUSCA
+# ============================================================
 
-# ========= FUNÇÃO PARA BUSCAR MAGIA =========
-def buscar_magia(nome):
-    for magia in MAGIAS:
-        if magia["title"].lower() == nome.lower():
+def buscar_magia(nome_magia):
+    for magia in magias:
+        if magia["nome"].lower() == nome_magia.lower():
             return magia
     return None
 
-# ========= FUNÇÃO ASSÍNCRONA DE AUTOCOMPLETE =========
-async def autocomplete_magia(interaction: discord.Interaction, current: str):
+# ============================================================
+# AUTOCOMPLETE CORRETAMENTE DEFINIDO
+# ============================================================
+
+async def autocomplete_magias(interaction: discord.Interaction, current: str):
     return [
-        app_commands.Choice(name=m["title"], value=m["title"])
-        for m in MAGIAS if current.lower() in m["title"].lower()
+        app_commands.Choice(name=m["nome"], value=m["nome"])
+        for m in magias if current.lower() in m["nome"].lower()
     ][:25]
 
-# ========= COMANDO /MAGIA =========
-@app_commands.command(name="magia", description="Consulta uma magia do grimório.")
-@app_commands.autocomplete(nome=autocomplete_magia)
-async def comando_magia(interaction: discord.Interaction, nome: str):
-    magia = buscar_magia(nome)
+# ============================================================
+# COMANDO /MAGIA
+# ============================================================
 
-    if not magia:
+@bot.tree.command(name="magia", description="Consulta uma magia do grimório.")
+@app_commands.autocomplete(nome=autocomplete_magias)
+async def magia(interaction: discord.Interaction, nome: str):
+    magia_info = buscar_magia(nome)
+    if not magia_info:
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
 
-    elemento = magia.get("element", "Desconhecido")
-    emoji = ELEMENTOS_EMOJIS.get(elemento.lower(), "✨")
-    elemento_formatado = f"{emoji} {elemento.capitalize()}"
+    elemento = magia_info.get("elemento", "Sem Elemento").capitalize()
+    emoji_elemento = ELEMENTOS_EMOJIS.get(elemento, "📘")
 
-    descricao = magia.get("description", "Sem descrição.")
-    efeito = magia.get("effect", "Sem efeito.")
-    custo = magia.get("cost", "N/A")
-    cooldown = magia.get("cooldown", "N/A")
-    duracao = magia.get("duration", "N/A")
-    limitacoes = magia.get("limitations", [])
-    categorias = magia.get("categories", [])
-    gif_url = magia.get("gif", None)
+    descricao = magia_info.get("descricao", "Sem descrição.")
+    efeito = magia_info.get("efeito", "Sem efeito.")
+    custo = magia_info.get("custo", "Não informado.")
+    cooldown = magia_info.get("cooldown", "Não informado.")
+    duracao = magia_info.get("duracao", "Não informado.")
+    limitacoes = magia_info.get("limitacoes", [])
+    gif = magia_info.get("gif", "")
 
-    # Limitar texto
-    descricao = limitar_texto(descricao)
-    efeito = limitar_texto(efeito)
-    custo = limitar_texto(str(custo))
-    cooldown = limitar_texto(str(cooldown))
-    duracao = limitar_texto(str(duracao))
-    limitacoes_texto = limitar_texto("\n".join(limitacoes) if isinstance(limitacoes, list) else str(limitacoes))
-    categorias_texto = ", ".join(categorias) if categorias else "Nenhuma."
+    # Concatena todas as limitações
+    if isinstance(limitacoes, list):
+        limitacoes_texto = "\n".join(f"- {l}" for l in limitacoes)
+    else:
+        limitacoes_texto = str(limitacoes)
 
     embed = discord.Embed(
-        title=f"✨ {magia['title']}",
-        color=discord.Color.orange()
+        title=f"{emoji_elemento} {magia_info['nome']}",
+        description=f"**Elemento:** {elemento}\n\n{descricao}",
+        color=discord.Color.purple()
     )
-    embed.add_field(name="🧩 Elemento", value=elemento_formatado, inline=False)
-    embed.add_field(name="📜 Descrição", value=descricao, inline=False)
-    embed.add_field(name="🎯 Efeito", value=efeito, inline=False)
-    embed.add_field(name="💧 Custo", value=custo, inline=True)
-    embed.add_field(name="⏳ Cooldown", value=cooldown, inline=True)
-    embed.add_field(name="🕒 Duração", value=duracao, inline=True)
-    embed.add_field(name="⚠️ Limitações", value=limitacoes_texto, inline=False)
-    embed.add_field(name="📚 Categorias", value=categorias_texto, inline=False)
+    embed.add_field(name="✨ Efeito", value=efeito, inline=False)
+    embed.add_field(name="💰 Custo de Mana", value=custo, inline=True)
+    embed.add_field(name="⏱️ Cooldown", value=cooldown, inline=True)
+    embed.add_field(name="⌛ Duração", value=duracao, inline=True)
+    embed.add_field(name="⚠️ Limitações", value=limitacoes_texto or "Nenhuma.", inline=False)
 
-    if gif_url:
-        embed.set_image(url=gif_url)
+    # Adiciona GIF se existir
+    if gif:
+        embed.set_image(url=gif)
 
     await interaction.response.send_message(embed=embed)
 
-# ========= REGISTRO DO COMANDO =========
+# ============================================================
+# EVENTO ON_READY (SINCRONIZAÇÃO DE COMANDOS)
+# ============================================================
+
 @bot.event
 async def on_ready():
-    await bot.tree.sync()
-    print(f"🚀 Bot conectado como {bot.user}")
-
-# ========= EXECUTAR O BOT =========
-# ---------------------------
-# START (Render-friendly)
-# ---------------------------
-if __name__ == "__main__":
-    import threading
-    import asyncio
-    import os
-    from waitress import serve  # certifique-se de ter waitress no requirements.txt
-
-    # porta que o Render expõe (se não existir, usa 8080 por compatibilidade local)
-    PORT = int(os.environ.get("PORT") or os.environ.get("PORT0") or 8080)
-
-    TOKEN = os.getenv("DISCORD_TOKEN") or os.getenv("TOKEN") or os.getenv("discord_token")
-
-    # debug: informa se leu token e porta (mas não imprime token)
-    print(f"🔌 Bind target: 0.0.0.0:{PORT}")
-    print(f"🔐 Token presente: {'Sim' if TOKEN else 'Não'}")
-
-    if not TOKEN:
-        print("❌ ERRO: Token ausente. Configure DISCORD_TOKEN (ou TOKEN/discord_token) nas Environment Variables.")
-        raise SystemExit(1)
-
-    # inicia waitress (faz o bind/escuta) em thread separada para o Render detectar a porta
-    def run_web():
-        print(f"📡 Iniciando servidor WSGI (waitress) em 0.0.0.0:{PORT}")
-        serve(app, host="0.0.0.0", port=PORT)
-
-    web_thread = threading.Thread(target=run_web, daemon=True)
-    web_thread.start()
-
-    # inicia o bot no loop principal
-    async def main_bot():
-        async with bot:
-            await bot.start(TOKEN)
-
     try:
-        asyncio.run(main_bot())
-    except KeyboardInterrupt:
-        print("🛑 Encerrando por KeyboardInterrupt")
+        synced = await bot.tree.sync()
+        print(f"✅ {len(synced)} comandos de barra sincronizados com o Discord.")
+        print(f"🤖 Bot conectado como {bot.user}")
     except Exception as e:
-        print("❌ Erro ao iniciar o bot:", e)
-        raise
+        print(f"❌ Erro ao sincronizar comandos: {e}")
 
+# ============================================================
+# EXECUÇÃO SEGURA PARA O RENDER
+# ============================================================
 
+def iniciar_bot():
+    asyncio.run(bot.start(TOKEN))
 
-
-
-
-
+if __name__ == "__main__":
+    threading.Thread(target=iniciar_bot).start()
+    serve(app, host="0.0.0.0", port=8080)
