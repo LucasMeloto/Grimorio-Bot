@@ -7,18 +7,15 @@ import json
 import os
 import asyncio
 import threading
+import unicodedata
 
 # ============================================================
 # CONFIGURAÇÃO BÁSICA
 # ============================================================
 
-# Token do Discord (definido no Render como variável de ambiente: DISCORD_TOKEN)
 TOKEN = os.getenv("DISCORD_TOKEN")
-
-# Arquivo JSON com as magias
 ARQUIVO_MAGIAS = "magias.json"
 
-# Inicializa o Flask (mantém o Render ativo)
 app = Flask(__name__)
 
 @app.route("/")
@@ -28,6 +25,18 @@ def home():
 @app.route("/ping")
 def ping():
     return "pong"
+
+# ============================================================
+# FUNÇÃO PARA REMOVER ACENTOS E NORMALIZAR STRINGS
+# ============================================================
+
+def normalizar(texto: str):
+    if not texto:
+        return ""
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto.lower().strip())
+        if unicodedata.category(c) != 'Mn'
+    )
 
 # ============================================================
 # CARREGAR MAGIAS
@@ -49,7 +58,6 @@ intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
 bot.remove_command("help")
 
-# Mapeamento de emojis dos elementos
 ELEMENTOS_EMOJIS = {
     "Fogo": "🔥",
     "Água": "💧",
@@ -67,23 +75,20 @@ ELEMENTOS_EMOJIS = {
 }
 
 # ============================================================
-# FUNÇÃO DE BUSCA
+# FUNÇÕES DE APOIO
 # ============================================================
 
 def buscar_magia(nome_magia):
+    nome_normalizado = normalizar(nome_magia)
     for magia in magias:
-        if magia["nome"].lower() == nome_magia.lower():
+        if normalizar(magia["nome"]) == nome_normalizado:
             return magia
     return None
-
-# ============================================================
-# AUTOCOMPLETE CORRETAMENTE DEFINIDO
-# ============================================================
 
 async def autocomplete_magias(interaction: discord.Interaction, current: str):
     return [
         app_commands.Choice(name=m["nome"], value=m["nome"])
-        for m in magias if current.lower() in m["nome"].lower()
+        for m in magias if normalizar(current) in normalizar(m["nome"])
     ][:25]
 
 # ============================================================
@@ -126,27 +131,63 @@ async def magia(interaction: discord.Interaction, nome: str):
     embed.add_field(name="⌛ Duração", value=duracao, inline=True)
     embed.add_field(name="⚠️ Limitações", value=limitacoes_texto or "Nenhuma.", inline=False)
 
-    # Adiciona GIF se existir
     if gif:
         embed.set_image(url=gif)
 
     await interaction.response.send_message(embed=embed)
 
 # ============================================================
-# EVENTO ON_READY (SINCRONIZAÇÃO DE COMANDOS)
+# COMANDO /LISTAR
+# ============================================================
+
+@bot.tree.command(name="listar", description="Lista todas as magias por elemento e nível.")
+async def listar(interaction: discord.Interaction):
+    elementos_organizados = {}
+
+    # Organiza as magias por elemento e nível
+    for m in magias:
+        elem = m.get("elemento", "Sem Elemento").capitalize()
+        nivel = m.get("nivel", "Básica").capitalize()
+        elementos_organizados.setdefault(elem, {"Básica": [], "Intermediária": [], "Avançada": []})
+        elementos_organizados[elem][nivel].append(m["nome"])
+
+    embeds = []
+
+    for elemento, niveis in elementos_organizados.items():
+        emoji = ELEMENTOS_EMOJIS.get(elemento, "📘")
+        embed = discord.Embed(
+            title=f"{emoji} {elemento}",
+            color=discord.Color.dark_purple()
+        )
+        for nivel, lista in niveis.items():
+            if lista:
+                embed.add_field(
+                    name=f"🌀 {nivel}",
+                    value="\n".join(sorted(lista)),
+                    inline=False
+                )
+        embeds.append(embed)
+
+    for embed in embeds:
+        await interaction.channel.send(embed=embed)
+
+    await interaction.response.send_message("📜 Magias listadas com sucesso!", ephemeral=True)
+
+# ============================================================
+# EVENTO ON_READY
 # ============================================================
 
 @bot.event
 async def on_ready():
     try:
         synced = await bot.tree.sync()
-        print(f"✅ {len(synced)} comandos de barra sincronizados com o Discord.")
+        print(f"✅ {len(synced)} comandos sincronizados.")
         print(f"🤖 Bot conectado como {bot.user}")
     except Exception as e:
         print(f"❌ Erro ao sincronizar comandos: {e}")
 
 # ============================================================
-# EXECUÇÃO SEGURA PARA O RENDER
+# EXECUÇÃO NO RENDER
 # ============================================================
 
 def iniciar_bot():
