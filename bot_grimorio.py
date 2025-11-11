@@ -121,29 +121,50 @@ async def on_ready():
     print(f"🚀 Bot conectado como {bot.user}")
 
 # ========= EXECUTAR O BOT =========
+# ---------------------------
+# START (Render-friendly)
+# ---------------------------
 if __name__ == "__main__":
     import threading
     import asyncio
     import os
+    from waitress import serve  # certifique-se de ter waitress no requirements.txt
 
-    TOKEN = os.getenv("DISCORD_TOKEN")
+    # porta que o Render expõe (se não existir, usa 8080 por compatibilidade local)
+    PORT = int(os.environ.get("PORT") or os.environ.get("PORT0") or 8080)
+
+    TOKEN = os.getenv("DISCORD_TOKEN") or os.getenv("TOKEN") or os.getenv("discord_token")
+
+    # debug: informa se leu token e porta (mas não imprime token)
+    print(f"🔌 Bind target: 0.0.0.0:{PORT}")
+    print(f"🔐 Token presente: {'Sim' if TOKEN else 'Não'}")
 
     if not TOKEN:
-        print("❌ ERRO: Token do bot não encontrado. Verifique a variável DISCORD_TOKEN no Render.")
-    else:
-        def run_flask():
-            from waitress import serve
-            serve(app, host="0.0.0.0", port=8080)
+        print("❌ ERRO: Token ausente. Configure DISCORD_TOKEN (ou TOKEN/discord_token) nas Environment Variables.")
+        raise SystemExit(1)
 
-        # inicia o flask em thread separada (não bloqueia o bot)
-        flask_thread = threading.Thread(target=run_flask, daemon=True)
-        flask_thread.start()
+    # inicia waitress (faz o bind/escuta) em thread separada para o Render detectar a porta
+    def run_web():
+        print(f"📡 Iniciando servidor WSGI (waitress) em 0.0.0.0:{PORT}")
+        serve(app, host="0.0.0.0", port=PORT)
 
-        async def main():
-            async with bot:
-                await bot.start(TOKEN)
+    web_thread = threading.Thread(target=run_web, daemon=True)
+    web_thread.start()
 
-        asyncio.run(main())
+    # inicia o bot no loop principal
+    async def main_bot():
+        async with bot:
+            await bot.start(TOKEN)
+
+    try:
+        asyncio.run(main_bot())
+    except KeyboardInterrupt:
+        print("🛑 Encerrando por KeyboardInterrupt")
+    except Exception as e:
+        print("❌ Erro ao iniciar o bot:", e)
+        raise
+
+
 
 
 
