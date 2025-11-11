@@ -14,7 +14,7 @@ import unicodedata
 # ============================================================
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-ARQUIVO_MAGIAS = "magias.json"
+ARQUIVO_MAGIAS = "grimorio_completo.json"
 
 app = Flask(__name__)
 
@@ -196,3 +196,4 @@ def iniciar_bot():
 if __name__ == "__main__":
     threading.Thread(target=iniciar_bot).start()
     serve(app, host="0.0.0.0", port=8080)
+
