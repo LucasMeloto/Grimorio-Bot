@@ -20,7 +20,6 @@ def ping():
 # ========= CONFIGURAÇÃO DO DISCORD =========
 intents = discord.Intents.default()
 intents.message_content = True
-
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # ========= CARREGAR O JSON =========
@@ -58,12 +57,16 @@ def buscar_magia(nome):
             return magia
     return None
 
-# ========= AUTOCOMPLETE =========
-@app_commands.autocomplete(nome=lambda interaction, current: [
-    app_commands.Choice(name=m["title"], value=m["title"])
-    for m in MAGIAS if current.lower() in m["title"].lower()
-][:25])
+# ========= FUNÇÃO ASSÍNCRONA DE AUTOCOMPLETE =========
+async def autocomplete_magia(interaction: discord.Interaction, current: str):
+    return [
+        app_commands.Choice(name=m["title"], value=m["title"])
+        for m in MAGIAS if current.lower() in m["title"].lower()
+    ][:25]
+
+# ========= COMANDO /MAGIA =========
 @app_commands.command(name="magia", description="Consulta uma magia do grimório.")
+@app_commands.autocomplete(nome=autocomplete_magia)
 async def comando_magia(interaction: discord.Interaction, nome: str):
     magia = buscar_magia(nome)
 
@@ -71,7 +74,6 @@ async def comando_magia(interaction: discord.Interaction, nome: str):
         await interaction.response.send_message(f"❌ Magia **{nome}** não encontrada.", ephemeral=True)
         return
 
-    # Elemento formatado com emoji
     elemento = magia.get("element", "Desconhecido")
     emoji = ELEMENTOS_EMOJIS.get(elemento.lower(), "✨")
     elemento_formatado = f"{emoji} {elemento.capitalize()}"
@@ -85,7 +87,7 @@ async def comando_magia(interaction: discord.Interaction, nome: str):
     categorias = magia.get("categories", [])
     gif_url = magia.get("gif", None)
 
-    # Limitar texto para evitar erro de embed
+    # Limitar texto
     descricao = limitar_texto(descricao)
     efeito = limitar_texto(efeito)
     custo = limitar_texto(str(custo))
@@ -94,7 +96,6 @@ async def comando_magia(interaction: discord.Interaction, nome: str):
     limitacoes_texto = limitar_texto("\n".join(limitacoes) if isinstance(limitacoes, list) else str(limitacoes))
     categorias_texto = ", ".join(categorias) if categorias else "Nenhuma."
 
-    # Criar o embed
     embed = discord.Embed(
         title=f"✨ {magia['title']}",
         color=discord.Color.orange()
