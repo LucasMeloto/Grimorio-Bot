@@ -126,6 +126,13 @@ if __name__ == "__main__":
     if not TOKEN:
         print("❌ ERRO: Token do bot não encontrado. Verifique a variável DISCORD_TOKEN no Render.")
     else:
-        loop = asyncio.get_event_loop()
-        loop.create_task(bot.start(TOKEN))
-        app.run(host="0.0.0.0", port=8080)
+        async def start_bot():
+            async with bot:
+                await bot.start(TOKEN)
+
+        import threading
+        threading.Thread(target=lambda: app.run(host="0.0.0.0", port=8080), daemon=True).start()
+
+        import asyncio
+        asyncio.run(start_bot())
+
