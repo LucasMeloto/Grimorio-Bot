@@ -6,12 +6,14 @@ import re
 from flask import Flask
 import threading
 
+TOKEN = os.getenv("TOKEN")
+
+if not TOKEN:
+    print("❌ Erro: Token do bot não encontrado nas variáveis de ambiente.")
+    exit()
 # ------------------------------------------------------------
 # CONFIGURAÇÃO DO BOT
 # ------------------------------------------------------------
-intents = discord.Intents.default()
-bot = commands.Bot(command_prefix="!", intents=intents)
-TOKEN = "SEU_TOKEN_AQUI"  # 🔥 substitua pelo token real do bot
 
 # ------------------------------------------------------------
 # FLASK (para manter o Render ativo)
@@ -175,3 +177,4 @@ async def on_ready():
 if __name__ == "__main__":
     threading.Thread(target=run_flask).start()
     bot.run(TOKEN)
+
