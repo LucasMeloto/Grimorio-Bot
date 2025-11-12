@@ -236,9 +236,20 @@ async def on_ready():
     except Exception as e:
         print("❌ Erro ao sincronizar comandos:", e)
 
+# ... (todo o código anterior permanece igual) ...
+
 if __name__ == "__main__":
-    threading.Thread(target=run_flask, daemon=True).start()
+    from waitress import serve
+    import threading
+
+    TOKEN = os.getenv("DISCORD_TOKEN")
     if not TOKEN:
-        print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas env vars.")
+        print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas environment variables.")
     else:
+        # inicia o servidor web
+        port = int(os.environ.get("PORT", 8080))
+        threading.Thread(target=lambda: serve(app, host="0.0.0.0", port=port), daemon=True).start()
+        # inicia o bot
         bot.run(TOKEN)
+
+
