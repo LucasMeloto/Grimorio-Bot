@@ -7,7 +7,7 @@ import os
 from flask import Flask
 import threading
 
-# ===== CONFIGURAÇÃO DO FLASK =====
+# ===== CONFIGURAÇÃO FLASK PARA MANTER ONLINE =====
 app = Flask(__name__)
 
 @app.route("/")
@@ -27,40 +27,52 @@ def normalizar_texto(texto: str) -> str:
 def limpar_html(texto: str) -> str:
     if not texto:
         return ""
+    # Remove <img>
     texto = re.sub(r"<img[^>]*>", "", texto, flags=re.IGNORECASE)
-    texto = re.sub(r"<\/?[biu]>", "", texto, flags=re.IGNORECASE)
-    texto = re.sub(r"<br\s*\/?>", "\n", texto, flags=re.IGNORECASE)
+    # Remove outras tags HTML simples como <b>, <i>, <p>, etc
+    texto = re.sub(r"</?(b|i|u|p|strong|em)[^>]*>", "", texto, flags=re.IGNORECASE)
+    # Conversão de <br> para quebras de linha
+    texto = re.sub(r"<br\s*/?>", "\n", texto, flags=re.IGNORECASE)
+    # Unifica muitas quebras
     texto = re.sub(r"\n{3,}", "\n\n", texto)
     return texto.strip()
 
 def extrair_campos_da_descricao(desc: str):
     descricao = desc or ""
+    # Captura URL de imagem/GIF se houver
     gif_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', descricao, flags=re.IGNORECASE)
     gif_url = gif_match.group(1) if gif_match else None
 
+    # Padrões possíveis para custo, cooldown, duração, efeito, limitações
     padroes = {
-        "custo": r'(?:^|\n)\s*(Custo|Cost)\s*:\s*(.+?)(?:\n|$)',
-        "cooldown": r'(?:^|\n)\s*(Cooldown|Recarga)\s*:\s*(.+?)(?:\n|$)',
-        "duracao": r'(?:^|\n)\s*(Dura[cç][aã]o|Duration)\s*:\s*(.+?)(?:\n|$)',
-        "efeito": r'(?:^|\n)\s*(Efeito|Effect)\s*:\s*(.+?)(?:\n|$)',
-        "limitacoes": r'(?:^|\n)\s*(Limita[cç][oõ]es|Limitations)\s*:\s*(.+?)(?:\n|$)'
+        "custo": r'(?:^|\n)\s*(Custo|Cost)\s*:\s*(.+?)(?=\n|$)',
+        "cooldown": r'(?:^|\n)\s*(Cooldown|Recarga)\s*:\s*(.+?)(?=\n|$)',
+        "duracao": r'(?:^|\n)\s*(Dura[cç][aã]o|Duration)\s*:\s*(.+?)(?=\n|$)',
+        "efeito": r'(?:^|\n)\s*(Efeito|Effect)\s*:\s*(.+?)(?=\n|$)',
+        "limitacoes": r'(?:^|\n)\s*(Limita[cç][oõ]es|Limitations)\s*:\s*(.+?)(?=\n|$)'
     }
 
-    encontrados = {k: None for k in padroes.keys()}
+    encontrados = {k: None for k in padroes}
 
     for chave, patt in padroes.items():
         m = re.search(patt, descricao, flags=re.IGNORECASE | re.DOTALL)
         if m:
+            # pega o valor
             encontrados[chave] = m.group(2).strip()
+            # remove esse trecho para que fique só a descrição limpa
             descricao = re.sub(patt, "\n", descricao, flags=re.IGNORECASE | re.DOTALL)
 
     descricao_limpa = limpar_html(descricao)
 
     lim_raw = encontrados.get("limitacoes")
+    lista_lim = []
     if lim_raw:
-        lista_lim = [l.strip() for l in lim_raw.splitlines() if l.strip()]
-    else:
-        lista_lim = []
+        # separar por ponto ou por linhas
+        partes = re.split(r'\.\s*|\n', lim_raw)
+        for parte in partes:
+            parte = parte.strip()
+            if parte:
+                lista_lim.append(parte)
 
     return (
         descricao_limpa,
@@ -83,10 +95,11 @@ except Exception as e:
 
 MAGIAS = []
 if isinstance(dados, list) and dados and isinstance(dados[0], dict) and "magias" in dados[0]:
-    for elem_block in dados:
-        for m in elem_block.get("magias", []):
+    for bloco in dados:
+        for m in bloco.get("magias", []):
+            # Preenche elemento se estiver no bloco mas não na magia
             if "element" not in m and "elemento" not in m:
-                m["element"] = elem_block.get("element") or elem_block.get("elemento") or ""
+                m["element"] = bloco.get("element") or bloco.get("elemento") or ""
             MAGIAS.append(m)
 else:
     MAGIAS = dados
@@ -98,13 +111,11 @@ EMOJI_ELEMENTOS = {
     "fire": "🔥", "fogo": "🔥",
     "water": "💧", "água": "💧", "agua": "💧",
     "earth": "🌱", "terra": "🌱",
-    "ar": "🌪️", "air": "🌪️",
+    "air": "🌪️", "ar": "🌪️",
     "light": "✨", "luz": "✨",
-    "dark": "🌑", "escuro": "🌑", "escuridão": "🌑",
-    "arcano": "🔮", "arcane": "🔮",
-    "dimensional": "🌀",
-    "time": "⌛", "tempo": "⌛",
-    "status": "💠", "none": "⚪", "unknown": "❔"
+    "dark": "🌑", "escuridão": "🌑", "escuro": "🌑",
+    "arcano": "🔮", "dimensional": "🌀", "time": "⌛", "tempo": "⌛",
+    "status": "💠", "unknown": "❔"
 }
 
 def emoji_elemento(el_raw: str):
@@ -117,13 +128,13 @@ def emoji_elemento(el_raw: str):
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# ===== AUTOCOMPLETE =====
+# ===== AUTOCOMPLETE PARA /magia =====
 async def autocomplete_magias(interaction: discord.Interaction, current: str):
     choices = []
     norm_cur = normalizar_texto(current)
     for m in MAGIAS:
         titulo = m.get("title") or m.get("titulo") or m.get("name") or m.get("nome") or ""
-        if norm_cur in normalizar_texto(str(titulo)):
+        if norm_cur in normalizar_texto(titulo):
             choices.append(app_commands.Choice(name=str(titulo)[:100], value=str(titulo)))
         if len(choices) >= 25:
             break
@@ -137,7 +148,7 @@ async def cmd_magia(interaction: discord.Interaction, nome: str):
     norm_target = normalizar_texto(nome)
     for m in MAGIAS:
         titulo = m.get("title") or m.get("titulo") or m.get("name") or m.get("nome") or ""
-        if normalizar_texto(str(titulo)) == norm_target:
+        if normalizar_texto(titulo) == norm_target:
             magia = m
             break
 
@@ -156,19 +167,30 @@ async def cmd_magia(interaction: discord.Interaction, nome: str):
     categorias = magia.get("categories") or magia.get("categorias") or []
     categorias_text = ", ".join(categorias) if categorias else "Nenhuma"
 
-    limitacoes_text = "\n".join(f"- {l}" for l in lista_lim) if lista_lim else "Nenhuma."
-    # limitar tamanho
-    desc_clean = desc_clean[:1021] + "..." if len(desc_clean) > 1024 else desc_clean
-    efeito = efeito[:1021] + "..." if len(efeito) > 1024 else efeito
-    limitacoes_text = limitacoes_text[:1021] + "..." if len(limitacoes_text) > 1024 else limitacoes_text
+    # Montar texto de limitações
+    if lista_lim:
+        limitacoes_text = "\n".join(f"- {l}" for l in lista_lim)
+    else:
+        limitacoes_text = "Nenhuma."
+
+    # Truncar para não ultrapassar 1024 por campo, conforme limite de embed do Discord
+    # Limite de valor de campo embed: 1024 caracteres. :contentReference[oaicite:0]{index=0}
+    def truncar(texto: str, limite: int = 1024):
+        if len(texto) > limite:
+            return texto[: limite - 3] + "..."
+        return texto
+
+    desc_clean = truncar(desc_clean)
+    efeito = truncar(efeito)
+    limitacoes_text = truncar(limitacoes_text)
 
     embed = discord.Embed(title=f"{emoji} {titulo}", color=discord.Color.orange())
     embed.add_field(name="🔷 Elemento", value=f"{emoji} {elemento_cap}", inline=False)
     embed.add_field(name="📜 Descrição", value=desc_clean or "Sem descrição.", inline=False)
     embed.add_field(name="🎯 Efeito", value=efeito or "Sem efeito.", inline=False)
-    embed.add_field(name="💧 Custo", value=str(custo)[:1024], inline=True)
-    embed.add_field(name="⏳ Cooldown", value=str(cooldown)[:1024], inline=True)
-    embed.add_field(name="⌛ Duração", value=str(duracao)[:1024], inline=True)
+    embed.add_field(name="💧 Custo", value=str(custo), inline=True)
+    embed.add_field(name="⏳ Cooldown", value=str(cooldown), inline=True)
+    embed.add_field(name="⌛ Duração", value=str(duracao), inline=True)
     embed.add_field(name="⚠️ Limitações", value=limitacoes_text, inline=False)
     embed.set_footer(text=f"Categorias: {categorias_text}")
 
@@ -178,8 +200,8 @@ async def cmd_magia(interaction: discord.Interaction, nome: str):
     await interaction.response.send_message(embed=embed)
 
 # ===== COMANDO /buscar =====
-@bot.tree.command(name="buscar", description="Busca magias que contenham termo no nome ou descrição.")
-@app_commands.describe(term="Palavra ou parte da magia que quer buscar")
+@bot.tree.command(name="buscar", description="Busca magias que contenham o termo no nome ou descrição.")
+@app_commands.describe(term="Palavra ou parte da magia para buscar")
 async def cmd_buscar(interaction: discord.Interaction, term: str):
     norm_term = normalizar_texto(term)
     encontrados = []
@@ -192,14 +214,15 @@ async def cmd_buscar(interaction: discord.Interaction, term: str):
             break
 
     if not encontrados:
-        await interaction.response.send_message(f"❌ Nenhuma magia encontrada com \"{term}\".", ephemeral=True)
+        await interaction.response.send_message(f"❌ Nenhuma magia encontrada para \"{term}\".", ephemeral=True)
         return
 
     texto = "\n".join(f"• {t}" for t in sorted(encontrados))
-    embed = discord.Embed(title=f"🔍 Resultado da busca ({len(encontrados)})", description=texto[:1024], color=discord.Color.blue())
+    texto = texto[:1024]  # truncar para descrição de embed se necessário
+    embed = discord.Embed(title=f"🔍 Resultados da busca ({len(encontrados)})", description=texto, color=discord.Color.blue())
     await interaction.response.send_message(embed=embed)
 
-# ===== EVENTO E INÍCIO =====
+# ===== INICIAR BOT E FLASK =====
 @bot.event
 async def on_ready():
     print(f"🤖 Bot conectado como {bot.user}")
@@ -213,6 +236,6 @@ if __name__ == "__main__":
     threading.Thread(target=run_flask, daemon=True).start()
     TOKEN = os.getenv("DISCORD_TOKEN")
     if not TOKEN:
-        print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas env vars.")
+        print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas variáveis de ambiente.")
     else:
         bot.run(TOKEN)
