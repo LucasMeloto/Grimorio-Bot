@@ -27,62 +27,48 @@ def normalizar_texto(texto: str) -> str:
 def limpar_html(texto: str) -> str:
     if not texto:
         return ""
-    # Remove <img>
+    # remove imagens
     texto = re.sub(r"<img[^>]*>", "", texto, flags=re.IGNORECASE)
-    # Remove outras tags HTML simples como <b>, <i>, <p>, etc
-    texto = re.sub(r"</?(b|i|u|p|strong|em)[^>]*>", "", texto, flags=re.IGNORECASE)
-    # Conversão de <br> para quebras de linha
-    texto = re.sub(r"<br\s*/?>", "\n", texto, flags=re.IGNORECASE)
-    # Unifica muitas quebras
-    texto = re.sub(r"\n{3,}", "\n\n", texto)
+    # remove tags HTML gerais
+    texto = re.sub(r"</?(p|div|span|strong|em|b|i|u|br)[^>]*>", "\n", texto, flags=re.IGNORECASE)
+    # substitui múltiplas quebras por duas
+    texto = re.sub(r"\n{2,}", "\n\n", texto)
     return texto.strip()
 
-def extrair_campos_da_descricao(desc: str):
-    descricao = desc or ""
-    # Captura URL de imagem/GIF se houver
-    gif_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', descricao, flags=re.IGNORECASE)
-    gif_url = gif_match.group(1) if gif_match else None
+def extrair_campos(desc: str):
+    s = limpar_html(desc)
 
-    # Padrões possíveis para custo, cooldown, duração, efeito, limitações
-    padroes = {
-        "custo": r'(?:^|\n)\s*(Custo|Cost)\s*:\s*(.+?)(?=\n|$)',
-        "cooldown": r'(?:^|\n)\s*(Cooldown|Recarga)\s*:\s*(.+?)(?=\n|$)',
-        "duracao": r'(?:^|\n)\s*(Dura[cç][aã]o|Duration)\s*:\s*(.+?)(?=\n|$)',
-        "efeito": r'(?:^|\n)\s*(Efeito|Effect)\s*:\s*(.+?)(?=\n|$)',
-        "limitacoes": r'(?:^|\n)\s*(Limita[cç][oõ]es|Limitations)\s*:\s*(.+?)(?=\n|$)'
+    # regex tolerante para capturar os campos
+    def busca(pads):
+        m = re.search(pads, s, flags=re.IGNORECASE | re.MULTILINE)
+        return m.group(1).strip() if m else None
+
+    efeito = busca(r"(?:^|\n)Efeito\s*:\s*(.+?)(?:\n|$)")
+    custo = busca(r"(?:^|\n)Custo\s*:\s*(.+?)(?:\n|$)")
+    cooldown = busca(r"(?:^|\n)Cooldown\s*:\s*(.+?)(?:\n|$)")
+    duracao = busca(r"(?:^|\n)Dura(?:ç|c)[aã]o\s*:\s*(.+?)(?:\n|$)")
+    lim = busca(r"(?:^|\n)Limita(?:ç|c)[oõ]es\s*:\s*(.+?)(?:\n|$)")
+
+    # extrair texto base da descrição sem os campos extras
+    # (remover tudo desde "Efeito:" pra frente)
+    desc_base = re.split(r"(?:\n|^)Efeito\s*:", s, flags=re.IGNORECASE)[0].strip()
+
+    # processar limitações em linhas separadas
+    lims = []
+    if lim:
+        for line in re.split(r"\.|\n", lim):
+            line = line.strip()
+            if line:
+                lims.append(line)
+
+    return {
+        "descricao": desc_base or None,
+        "efeito": efeito,
+        "custo": custo,
+        "cooldown": cooldown,
+        "duracao": duracao,
+        "limitacoes": lims if lims else None
     }
-
-    encontrados = {k: None for k in padroes}
-
-    for chave, patt in padroes.items():
-        m = re.search(patt, descricao, flags=re.IGNORECASE | re.DOTALL)
-        if m:
-            # pega o valor
-            encontrados[chave] = m.group(2).strip()
-            # remove esse trecho para que fique só a descrição limpa
-            descricao = re.sub(patt, "\n", descricao, flags=re.IGNORECASE | re.DOTALL)
-
-    descricao_limpa = limpar_html(descricao)
-
-    lim_raw = encontrados.get("limitacoes")
-    lista_lim = []
-    if lim_raw:
-        # separar por ponto ou por linhas
-        partes = re.split(r'\.\s*|\n', lim_raw)
-        for parte in partes:
-            parte = parte.strip()
-            if parte:
-                lista_lim.append(parte)
-
-    return (
-        descricao_limpa,
-        encontrados.get("efeito") or "",
-        encontrados.get("custo") or "N/A",
-        encontrados.get("cooldown") or "N/A",
-        encontrados.get("duracao") or "N/A",
-        lista_lim,
-        gif_url
-    )
 
 # ===== CARREGAR JSON =====
 ARQUIVO_JSON = "grimorio_completo.json"
@@ -239,3 +225,4 @@ if __name__ == "__main__":
         print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas variáveis de ambiente.")
     else:
         bot.run(TOKEN)
+
