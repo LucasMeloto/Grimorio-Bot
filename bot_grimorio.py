@@ -292,10 +292,15 @@ async def cmd_buscar(interaction: discord.Interaction, term: str):
     for m in MAGIAS:
         titulo = m["title"] or ""
         desc = m["description"] or ""
-        if norm_term in clean_string(titulo) or norm_term in clean_string(desc):
-            encontrados.append(titulo)
-        if len(encontrados) >= 25:
-            break
+# --- BUSCA APRIMORADA ---
+cats = " ".join(m["categories"]) if m["categories"] else ""
+
+if (
+    norm_term in clean_string(titulo) or
+    norm_term in clean_string(desc) or
+    norm_term in clean_string(cats)
+):
+    encontrados.append(titulo)
 
     if not encontrados:
         await interaction.response.send_message(f"❌ Nenhuma magia encontrada para \"{term}\".", ephemeral=True)
@@ -326,3 +331,4 @@ if __name__ == "__main__":
         print("❌ Token do Discord não configurado! Defina DISCORD_TOKEN nas variáveis de ambiente.")
     else:
         bot.run(TOKEN)
+
